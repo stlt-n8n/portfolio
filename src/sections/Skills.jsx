@@ -9,12 +9,12 @@ function Skills() {
         <SectionHeader
           eyebrow="Skills"
           title="A practical toolkit for automation and IT work."
-          description="The categories are separated from the interface, so adding or removing skills later is straightforward."
+          description="Tools and systems I use to build automations, connect business workflows, and solve IT problems."
         />
 
         <div className="skills-grid">
-          {skillCategories.map((category) => (
-            <SkillGroup category={category} key={category.title} />
+          {skillCategories.map((category, index) => (
+            <SkillGroup category={category} index={index} key={category.title} />
           ))}
         </div>
       </div>

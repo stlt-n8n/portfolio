@@ -1,6 +1,6 @@
 import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader.jsx';
-import { contactLinks } from '../data/siteContent.js';
+import { contactLinks, profile } from '../data/siteContent.js';
 
 const iconMap = {
   GitHub: Github,
@@ -14,16 +14,24 @@ function Contact() {
       <div className="section-shell contact-layout">
         <SectionHeader
           eyebrow="Contact"
-          title="Open to roles, collaborations, and automation projects."
-          description="Replace the placeholders below with your real profiles when you are ready."
+          title="Let’s connect around practical automation work."
+          description={profile.availability}
         />
 
         <div className="contact-list reveal">
           {contactLinks.map((link) => {
             const Icon = iconMap[link.label] || ArrowUpRight;
+            const opensInNewTab = link.href.startsWith('http');
 
             return (
-              <a className="contact-link" href={link.href} key={link.label}>
+              <a
+                className="contact-link"
+                href={link.href}
+                key={link.label}
+                target={opensInNewTab ? '_blank' : undefined}
+                rel={opensInNewTab ? 'noopener noreferrer' : undefined}
+                aria-label={`${link.label}: ${link.value}`}
+              >
                 <span className="contact-icon">
                   <Icon size={20} />
                 </span>

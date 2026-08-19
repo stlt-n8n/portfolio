@@ -7,15 +7,15 @@ function About() {
       <div className="section-shell about-layout">
         <SectionHeader
           eyebrow="About"
-          title="Focused on useful automation, clear systems, and reliable execution."
-          description="This area is intentionally easy to edit when you want to add your experience, certifications, or preferred industries."
+          title="Practical automation for real operational work."
+          description="I care about systems that save time, reduce repetitive work, and make information easier to act on."
         />
 
         <div className="about-card reveal">
           <p>{profile.about}</p>
           <div className="about-highlights">
-            <span>AI workflows</span>
-            <span>Business processes</span>
+            <span>Automation thinking</span>
+            <span>Operational workflows</span>
             <span>IT problem solving</span>
           </div>
         </div>

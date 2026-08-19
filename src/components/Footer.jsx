@@ -1,8 +1,10 @@
+import { profile } from '../data/siteContent.js';
+
 function Footer() {
   return (
     <footer className="footer">
-      <p>AI Automation Engineer & IT Specialist</p>
-      <p>Built for job applications, freelance work, networking, and long-term growth.</p>
+      <p>{profile.name}</p>
+      <p>{profile.title}</p>
     </footer>
   );
 }

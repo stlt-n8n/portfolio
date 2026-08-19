@@ -8,7 +8,10 @@ function Hero() {
       <RevealOnScroll />
       <div className="hero-grid">
         <div className="hero-copy reveal is-visible">
-          <span className="eyebrow">Personal Portfolio</span>
+          <div className="hero-identity">
+            <span className="eyebrow">Portfolio</span>
+            <span className="hero-role">{profile.name}</span>
+          </div>
           <h1>{profile.title}</h1>
           <p>{profile.intro}</p>
           <div className="hero-actions">
@@ -20,11 +23,6 @@ function Hero() {
               Contact Me
               <Mail size={18} />
             </a>
-          </div>
-          <div className="hero-focus-list" aria-label="Portfolio focus">
-            <span>AI workflows</span>
-            <span>Business automation</span>
-            <span>IT systems</span>
           </div>
         </div>
 
@@ -41,6 +39,8 @@ function Hero() {
               <strong>Build</strong>
               <small>automate / connect / support</small>
             </span>
+            <span className="signal-ring signal-ring-one" />
+            <span className="signal-ring signal-ring-two" />
             <span className="signal-line signal-line-one" />
             <span className="signal-line signal-line-two" />
             <span className="signal-node node-ai">AI</span>
@@ -50,16 +50,16 @@ function Hero() {
           </div>
           <div className="panel-metrics">
             <div>
-              <strong>AI</strong>
-              <span>Practical systems</span>
+              <strong>01</strong>
+              <span>Map the workflow</span>
             </div>
             <div>
-              <strong>Ops</strong>
-              <span>Clean workflows</span>
+              <strong>02</strong>
+              <span>Build the automation</span>
             </div>
             <div>
-              <strong>IT</strong>
-              <span>Reliable support</span>
+              <strong>03</strong>
+              <span>Make it usable</span>
             </div>
           </div>
           <div className="panel-console" aria-label="Automation process preview">
