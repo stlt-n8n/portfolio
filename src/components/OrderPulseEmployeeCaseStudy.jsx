@@ -14,7 +14,14 @@ function EmployeeImagePanel({ media, title, label, className = '' }) {
       rel="noopener noreferrer"
       aria-label={`Open ${title} screenshot`}
     >
-      <img src={media.src} alt={`${title} screenshot`} loading="lazy" />
+      <img
+        src={media.src}
+        alt={`${title} screenshot`}
+        width={media.width}
+        height={media.height}
+        loading="lazy"
+        decoding="async"
+      />
       <span>
         {label}
         <ArrowUpRight size={16} />
@@ -58,15 +65,12 @@ function OrderPulseEmployeeCaseStudy({ project }) {
           </div>
 
           <div className="project-actions">
-            <a className="button button-primary" href={project.caseStudyUrl}>
-              {project.caseStudyLabel}
-              <ArrowUpRight size={18} />
-            </a>
             <a
               className="button button-secondary"
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Open ${project.title} repository on GitHub`}
             >
               <Github size={18} />
               {project.githubLabel}
@@ -75,7 +79,14 @@ function OrderPulseEmployeeCaseStudy({ project }) {
         </div>
 
         <figure className="employee-banner-card">
-          <img src={project.image} alt={`${project.title} banner`} loading="lazy" />
+          <img
+            src={project.image}
+            alt={`${project.title} banner`}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            loading="lazy"
+            decoding="async"
+          />
         </figure>
       </div>
 
@@ -197,6 +208,7 @@ function OrderPulseEmployeeCaseStudy({ project }) {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Open ${project.title} repository on GitHub`}
         >
           <Github size={18} />
           Open GitHub

@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { navigation, profile } from '../data/siteContent.js';
 
 function Header() {
@@ -7,18 +8,29 @@ function Header() {
 
   const closeMenu = () => setIsOpen(false);
 
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, []);
+
   return (
     <header className="site-header">
-      <a className="brand" href="#top" aria-label="Back to top">
+      <Link className="brand" to="/#top" aria-label="Back to top" onClick={closeMenu}>
         <span className="brand-mark">VL</span>
         <span>{profile.name}</span>
-      </a>
+      </Link>
 
       <nav className={`nav-links ${isOpen ? 'is-open' : ''}`} id="main-navigation" aria-label="Main navigation">
         {navigation.map((item) => (
-          <a key={item.href} href={item.href} onClick={closeMenu}>
+          <Link key={item.href} to={item.href} onClick={closeMenu}>
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
 

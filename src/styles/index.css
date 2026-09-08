@@ -223,6 +223,10 @@ img {
   padding: 124px 20px;
 }
 
+section[id] {
+  scroll-margin-top: 110px;
+}
+
 .section::after {
   position: absolute;
   right: 20px;
@@ -901,6 +905,21 @@ p {
   margin-bottom: clamp(34px, 5vw, 64px);
 }
 
+.featured-project-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(32px, 5vw, 56px);
+}
+
+.projects-page-section,
+.project-page-section {
+  padding-top: 164px;
+}
+
+.project-page-actions {
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
 .compact-project-grid {
   margin-bottom: 0;
 }
@@ -1040,94 +1059,6 @@ p {
 
 .project-visual-job-match img {
   opacity: 0.94;
-}
-
-.screenshot-label {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: calc(100% - 36px);
-  min-height: 38px;
-  padding: 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 7px;
-  color: var(--color-muted-strong);
-  background: rgba(5, 6, 9, 0.72);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
-  font-size: 0.78rem;
-  font-weight: 780;
-  backdrop-filter: blur(16px) saturate(135%);
-}
-
-.workflow-diagram {
-  position: absolute;
-  inset: 12% 8%;
-  z-index: 2;
-  display: grid;
-  align-content: center;
-  gap: 10px;
-  pointer-events: none;
-}
-
-.workflow-step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  align-items: center;
-  gap: 12px;
-  width: min(100%, 292px);
-  min-height: 44px;
-  padding: 8px 12px 8px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 8px;
-  color: var(--color-muted-strong);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
-    rgba(6, 8, 12, 0.72);
-  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
-  font-size: 0.72rem;
-  font-weight: 820;
-  backdrop-filter: blur(18px) saturate(140%);
-}
-
-.workflow-step::after {
-  position: absolute;
-  bottom: -11px;
-  left: 24px;
-  width: 1px;
-  height: 10px;
-  content: "";
-  background: linear-gradient(180deg, rgba(226, 193, 116, 0.7), transparent);
-}
-
-.workflow-step:last-child::after {
-  display: none;
-}
-
-.workflow-node {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border: 1px solid rgba(226, 193, 116, 0.26);
-  border-radius: 7px;
-  color: var(--color-gold);
-  background: rgba(226, 193, 116, 0.08);
-  font-size: 0.66rem;
-}
-
-.workflow-analytics .workflow-step:nth-child(even),
-.workflow-search .workflow-step:nth-child(odd) {
-  margin-left: auto;
-}
-
-.workflow-operations .workflow-step:nth-child(2),
-.workflow-operations .workflow-step:nth-child(3) {
-  margin-left: 26px;
 }
 
 .project-card:hover .project-image-wrap img {
@@ -2495,6 +2426,7 @@ p {
       rgba(5, 6, 9, 0.92);
     box-shadow: var(--shadow-soft);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(-8px);
     transition:
@@ -2505,6 +2437,7 @@ p {
 
   .nav-links.is-open {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
   }
@@ -2580,14 +2513,6 @@ p {
   .signal-map {
     min-height: 322px;
     margin-top: 28px;
-  }
-
-  .workflow-diagram {
-    inset: 10% 7%;
-  }
-
-  .workflow-step {
-    width: min(100%, 292px);
   }
 
   .case-study {
@@ -2742,10 +2667,4 @@ p {
     gap: 12px;
   }
 
-  .workflow-operations .workflow-step:nth-child(2),
-  .workflow-operations .workflow-step:nth-child(3),
-  .workflow-analytics .workflow-step:nth-child(even),
-  .workflow-search .workflow-step:nth-child(odd) {
-    margin-left: 0;
-  }
 }

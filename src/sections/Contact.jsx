@@ -21,7 +21,7 @@ function Contact() {
         <div className="contact-list reveal">
           {contactLinks.map((link) => {
             const Icon = iconMap[link.label] || ArrowUpRight;
-            const opensInNewTab = link.href.startsWith('http');
+            const opensInNewTab = true;
 
             return (
               <a
@@ -30,7 +30,7 @@ function Contact() {
                 key={link.label}
                 target={opensInNewTab ? '_blank' : undefined}
                 rel={opensInNewTab ? 'noopener noreferrer' : undefined}
-                aria-label={`${link.label}: ${link.value}`}
+                aria-label={`${link.label}: ${link.value}. Opens in a new tab.`}
               >
                 <span className="contact-icon">
                   <Icon size={20} />

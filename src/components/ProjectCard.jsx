@@ -1,6 +1,6 @@
-import { ArrowUpRight, Github, Image } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import TechIcon from './TechIcon.jsx';
-import WorkflowDiagram from './WorkflowDiagram.jsx';
 
 function ProjectCard({ project, index }) {
   const hasGithubLink = project.githubUrl && project.githubUrl !== '#';
@@ -14,12 +14,14 @@ function ProjectCard({ project, index }) {
       style={{ '--reveal-delay': `${index * 90}ms` }}
     >
       <div className={`project-image-wrap project-visual-${project.variant}`}>
-        <img src={project.image} alt="" loading="lazy" />
-        <WorkflowDiagram steps={project.flow} variant={project.variant} />
-        <div className="screenshot-label">
-          <Image size={16} />
-          <span>{project.evidenceLabel}</span>
-        </div>
+        <img
+          src={project.image}
+          alt={`${project.title} project preview`}
+          width={project.imageWidth}
+          height={project.imageHeight}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div className="project-content">
@@ -47,16 +49,17 @@ function ProjectCard({ project, index }) {
                 href={project.githubUrl}
                 target={project.githubUrl.startsWith('http') ? '_blank' : undefined}
                 rel={project.githubUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={`Open ${project.title} repository on GitHub`}
               >
                 <Github size={18} />
                 {project.githubLabel || 'GitHub'}
               </a>
             ) : null}
             {hasCaseStudyLink ? (
-              <a className="button button-primary" href={project.caseStudyUrl}>
+              <Link className="button button-primary" to={project.caseStudyUrl}>
                 View Case Study
                 <ArrowUpRight size={18} />
-              </a>
+              </Link>
             ) : null}
           </div>
         ) : null}

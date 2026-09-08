@@ -4,7 +4,7 @@ import TechIcon from './TechIcon.jsx';
 function ProjectCaseStudy({ project }) {
   const workflowText = project.flow.join(' → ');
   const workflowImage = project.media.find((item) => item.title === 'Workflow');
-  const outputImage = project.media.find((item) => item.title === 'Example Output');
+  const outputImage = project.media.find((item) => item.title === 'Structured Output');
   const introTechnologies = [
     'n8n',
     'OpenAI API',
@@ -37,6 +37,7 @@ function ProjectCaseStudy({ project }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Open ${project.title} repository on GitHub`}
             >
               <Github size={18} />
               GitHub
@@ -45,7 +46,14 @@ function ProjectCaseStudy({ project }) {
         </div>
 
         <figure className="case-study-cover">
-          <img src={project.image} alt={`${project.title} project cover`} loading="lazy" />
+          <img
+            src={project.image}
+            alt={`${project.title} project cover`}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            loading="lazy"
+            decoding="async"
+          />
         </figure>
       </div>
 
@@ -74,7 +82,14 @@ function ProjectCaseStudy({ project }) {
           rel="noopener noreferrer"
           aria-label="Open AI Job Match Analyzer workflow screenshot"
         >
-          <img src={workflowImage.src} alt={`${project.title} n8n workflow`} loading="lazy" />
+          <img
+            src={workflowImage.src}
+            alt={`${project.title} n8n workflow`}
+            width={workflowImage.width}
+            height={workflowImage.height}
+            loading="lazy"
+            decoding="async"
+          />
           <span>
             Open full workflow
             <ArrowUpRight size={16} />
@@ -96,7 +111,14 @@ function ProjectCaseStudy({ project }) {
           rel="noopener noreferrer"
           aria-label="Open AI Job Match Analyzer Google Sheets output screenshot"
         >
-          <img src={outputImage.src} alt={`${project.title} Google Sheets output`} loading="lazy" />
+          <img
+            src={outputImage.src}
+            alt={`${project.title} Google Sheets output`}
+            width={outputImage.width}
+            height={outputImage.height}
+            loading="lazy"
+            decoding="async"
+          />
           <span>
             Open full output
             <ArrowUpRight size={16} />

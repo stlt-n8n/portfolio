@@ -1,11 +1,10 @@
 import { ArrowDown, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { profile } from '../data/siteContent.js';
-import RevealOnScroll from '../components/RevealOnScroll.jsx';
 
 function Hero() {
   return (
     <section className="hero section" id="top">
-      <RevealOnScroll />
       <div className="hero-grid">
         <div className="hero-copy reveal is-visible">
           <div className="hero-identity">
@@ -15,14 +14,14 @@ function Hero() {
           <h1>{profile.title}</h1>
           <p>{profile.intro}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#projects">
+            <Link className="button button-primary" to="/projects">
               View Projects
               <ArrowDown size={18} />
-            </a>
-            <a className="button button-secondary" href="#contact">
+            </Link>
+            <Link className="button button-secondary" to="/#contact">
               Contact Me
               <Mail size={18} />
-            </a>
+            </Link>
           </div>
         </div>
 
