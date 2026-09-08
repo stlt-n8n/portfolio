@@ -21,7 +21,7 @@ function RevealOnScroll() {
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.01 },
     );
 
     items.forEach((item) => observer.observe(item));

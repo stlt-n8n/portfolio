@@ -1061,8 +1061,42 @@ p {
   opacity: 0.94;
 }
 
+.project-visual-support {
+  background:
+    radial-gradient(circle at 72% 28%, rgba(154, 245, 207, 0.13), transparent 28%),
+    radial-gradient(circle at 22% 72%, rgba(148, 215, 255, 0.09), transparent 30%),
+    var(--color-bg-soft);
+}
+
+.project-visual-support img {
+  object-fit: contain;
+  opacity: 0.96;
+  transform: scale(0.97);
+}
+
 .project-card:hover .project-image-wrap img {
   transform: scale(1.045);
+}
+
+.project-card:hover .project-visual-support img {
+  transform: scale(1.01);
+}
+
+.project-visual-invoice {
+  background:
+    radial-gradient(circle at 76% 30%, rgba(154, 245, 207, 0.14), transparent 28%),
+    radial-gradient(circle at 18% 70%, rgba(148, 215, 255, 0.085), transparent 30%),
+    var(--color-bg-soft);
+}
+
+.project-visual-invoice img {
+  object-fit: contain;
+  opacity: 0.96;
+  transform: scale(0.97);
+}
+
+.project-card:hover .project-visual-invoice img {
+  transform: scale(1.01);
 }
 
 .project-content {
@@ -1878,6 +1912,757 @@ p {
   min-width: 190px;
 }
 
+.support-case-study {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.072), transparent 34%),
+    radial-gradient(circle at 82% 10%, rgba(148, 215, 255, 0.1), transparent 25%),
+    radial-gradient(circle at 14% 72%, rgba(154, 245, 207, 0.08), transparent 25%),
+    rgba(13, 17, 24, 0.74);
+}
+
+.support-case-intro,
+.support-feature-block,
+.support-feature-grid,
+.support-scope-grid,
+.support-tech-row,
+.support-github-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.support-case-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.support-banner-card,
+.support-image-panel {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent),
+    rgba(5, 6, 9, 0.46);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.support-banner-card {
+  display: grid;
+  margin: 0;
+  padding: clamp(12px, 2vw, 18px);
+  place-items: center;
+}
+
+.support-banner-card img,
+.support-image-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(5, 6, 9, 0.4);
+}
+
+.support-banner-card img {
+  max-height: 460px;
+}
+
+.support-problem-solution {
+  margin-top: clamp(32px, 5vw, 58px);
+}
+
+.support-feature-block,
+.support-feature-grid,
+.support-scope-grid,
+.support-tech-row,
+.support-github-panel {
+  margin-top: clamp(32px, 5vw, 58px);
+}
+
+.support-feature-block {
+  display: grid;
+  gap: 22px;
+}
+
+.support-feature-block h4,
+.support-feature-copy h4,
+.support-scope-card h4,
+.support-tech-row h4,
+.support-github-panel h4 {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: clamp(1.45rem, 2vw, 2.05rem);
+  line-height: 1.12;
+}
+
+.support-feature-block .case-study-block-header > p,
+.support-feature-copy p,
+.support-scope-card p {
+  max-width: 76ch;
+  margin: 0;
+  color: var(--color-muted-strong);
+  line-height: 1.68;
+}
+
+.support-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.76fr) minmax(0, 1.24fr);
+  gap: clamp(22px, 4vw, 44px);
+  align-items: center;
+}
+
+.support-feature-copy,
+.support-scope-card,
+.support-tech-row,
+.support-github-panel {
+  min-width: 0;
+  padding: clamp(22px, 3vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.058), transparent 44%),
+    rgba(255, 255, 255, 0.024);
+}
+
+.support-feature-copy p + p {
+  margin-top: 14px;
+}
+
+.support-image-panel {
+  position: relative;
+  display: grid;
+  align-content: center;
+  padding: clamp(10px, 1.8vw, 16px);
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms var(--ease-out);
+}
+
+.support-image-panel:hover {
+  border-color: rgba(154, 245, 207, 0.28);
+  box-shadow: 0 30px 96px rgba(0, 0, 0, 0.42);
+  transform: translateY(-3px);
+}
+
+.support-image-panel img {
+  max-height: 520px;
+}
+
+.support-image-panel-wide img {
+  max-height: 600px;
+}
+
+.support-image-panel-compact img {
+  max-height: 260px;
+}
+
+.support-image-panel span {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  color: var(--color-muted-strong);
+  background: rgba(5, 6, 9, 0.78);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.3);
+  font-size: 0.78rem;
+  font-weight: 820;
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+.support-flow-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.support-flow-list li {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 8px;
+  color: var(--color-muted-strong);
+  background:
+    linear-gradient(145deg, rgba(148, 215, 255, 0.052), transparent 48%),
+    rgba(255, 255, 255, 0.024);
+  font-size: 0.82rem;
+  font-weight: 720;
+  line-height: 1.42;
+  overflow-wrap: anywhere;
+}
+
+.support-flow-list span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--color-gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.support-intent-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.support-intent-grid article {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(154, 245, 207, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.06), transparent 52%),
+    rgba(255, 255, 255, 0.024);
+}
+
+.support-intent-grid code {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 820;
+  overflow-wrap: anywhere;
+}
+
+.support-intent-grid p {
+  margin: 0;
+  color: var(--color-muted-strong);
+  font-size: 0.82rem;
+  line-height: 1.56;
+}
+
+.support-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.support-media-grid .support-image-panel {
+  min-height: 210px;
+}
+
+.support-alert-grid .support-image-panel {
+  min-height: 170px;
+}
+
+.support-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.support-scope-card.is-evolution {
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.072), transparent 48%),
+    rgba(255, 255, 255, 0.026);
+}
+
+.support-detail-list {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.support-detail-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--color-muted-strong);
+  line-height: 1.58;
+}
+
+.support-detail-list li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  content: "";
+  background: var(--color-gold);
+  box-shadow: 0 0 14px rgba(226, 193, 116, 0.32);
+}
+
+.support-tech-row,
+.support-github-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.52fr) minmax(0, 1.48fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.support-tech-row h4,
+.support-github-panel h4 {
+  margin-bottom: 0;
+}
+
+.support-github-panel {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.support-github-panel .button {
+  min-width: 210px;
+}
+
+.invoice-case-study {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), transparent 34%),
+    radial-gradient(circle at 84% 9%, rgba(154, 245, 207, 0.095), transparent 24%),
+    radial-gradient(circle at 9% 62%, rgba(148, 215, 255, 0.065), transparent 22%),
+    rgba(13, 17, 24, 0.74);
+}
+
+.invoice-case-intro,
+.invoice-problem-layout,
+.invoice-workflow-section,
+.invoice-extraction-section,
+.invoice-decision-section,
+.invoice-ledger-row,
+.invoice-evidence-section,
+.invoice-scope-grid,
+.invoice-footer-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.invoice-case-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.invoice-banner-card,
+.invoice-image-panel {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent),
+    rgba(5, 6, 9, 0.46);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.invoice-banner-card {
+  display: grid;
+  margin: 0;
+  padding: clamp(12px, 2vw, 18px);
+  place-items: center;
+}
+
+.invoice-banner-card img,
+.invoice-image-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(5, 6, 9, 0.4);
+}
+
+.invoice-banner-card img {
+  max-height: 460px;
+}
+
+.invoice-problem-layout,
+.invoice-workflow-section,
+.invoice-extraction-section,
+.invoice-decision-section,
+.invoice-ledger-row,
+.invoice-evidence-section,
+.invoice-scope-grid,
+.invoice-footer-panel {
+  margin-top: clamp(32px, 5vw, 58px);
+}
+
+.invoice-problem-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 18px;
+}
+
+.invoice-problem-card,
+.invoice-solution-card,
+.invoice-extraction-copy,
+.invoice-decision-section,
+.invoice-ledger-copy,
+.invoice-demo-note,
+.invoice-scope-card,
+.invoice-footer-panel {
+  min-width: 0;
+  padding: clamp(22px, 3vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.058), transparent 44%),
+    rgba(255, 255, 255, 0.024);
+}
+
+.invoice-solution-card {
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.068), transparent 46%),
+    rgba(255, 255, 255, 0.026);
+}
+
+.invoice-problem-card h4,
+.invoice-solution-card h4,
+.invoice-workflow-section h4,
+.invoice-extraction-copy h4,
+.invoice-decision-section h4,
+.invoice-ledger-copy h4,
+.invoice-evidence-section h4,
+.invoice-demo-note h4,
+.invoice-scope-card h4,
+.invoice-footer-panel h4 {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: clamp(1.45rem, 2vw, 2.05rem);
+  line-height: 1.12;
+}
+
+.invoice-problem-card p,
+.invoice-solution-card p,
+.invoice-workflow-section .case-study-block-header > p,
+.invoice-extraction-copy > p,
+.invoice-decision-section .case-study-block-header > p,
+.invoice-ledger-copy p,
+.invoice-demo-note p,
+.invoice-scope-card p {
+  max-width: 76ch;
+  margin: 0;
+  color: var(--color-muted-strong);
+  line-height: 1.68;
+}
+
+.invoice-solution-card blockquote {
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-text);
+  background: rgba(154, 245, 207, 0.04);
+  font-size: 0.94rem;
+  font-weight: 720;
+  line-height: 1.58;
+}
+
+.invoice-workflow-section,
+.invoice-evidence-section {
+  display: grid;
+  gap: 22px;
+}
+
+.invoice-image-panel {
+  position: relative;
+  display: grid;
+  align-content: center;
+  padding: clamp(10px, 1.8vw, 16px);
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms var(--ease-out);
+}
+
+.invoice-image-panel:hover {
+  border-color: rgba(154, 245, 207, 0.28);
+  box-shadow: 0 30px 96px rgba(0, 0, 0, 0.42);
+  transform: translateY(-3px);
+}
+
+.invoice-image-panel img {
+  max-height: 520px;
+}
+
+.invoice-image-panel-wide img {
+  max-height: 520px;
+}
+
+.invoice-image-panel-extraction img {
+  max-height: 620px;
+}
+
+.invoice-image-panel-ledger img {
+  max-height: 330px;
+}
+
+.invoice-image-panel-portrait img,
+.invoice-image-panel-document img {
+  max-height: 560px;
+}
+
+.invoice-image-panel span {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  color: var(--color-muted-strong);
+  background: rgba(5, 6, 9, 0.8);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.3);
+  font-size: 0.78rem;
+  font-weight: 820;
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+.invoice-stage-line {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.invoice-stage-line li {
+  position: relative;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.048), transparent 52%),
+    rgba(255, 255, 255, 0.024);
+}
+
+.invoice-stage-line li:not(:last-child)::after {
+  position: absolute;
+  top: 26px;
+  right: -8px;
+  z-index: 2;
+  width: 15px;
+  height: 1px;
+  content: "";
+  background: var(--color-gold);
+}
+
+.invoice-stage-line span {
+  display: block;
+  margin-bottom: 17px;
+  color: var(--color-gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.invoice-stage-line p {
+  margin: 0;
+  color: var(--color-muted-strong);
+  font-size: 0.82rem;
+  font-weight: 720;
+  line-height: 1.44;
+  overflow-wrap: anywhere;
+}
+
+.invoice-extraction-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(22px, 4vw, 44px);
+  align-items: center;
+}
+
+.invoice-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.invoice-field-grid code {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(154, 245, 207, 0.12);
+  border-radius: 7px;
+  color: var(--color-accent);
+  background: rgba(154, 245, 207, 0.035);
+  font-size: 0.78rem;
+  font-weight: 780;
+  overflow-wrap: anywhere;
+}
+
+.invoice-decision-section {
+  display: grid;
+  gap: 22px;
+}
+
+.invoice-decision-section .case-study-block-header > p code,
+.invoice-demo-note code {
+  color: var(--color-accent);
+}
+
+.invoice-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.invoice-decision-card {
+  display: grid;
+  min-width: 0;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 8px;
+  background: rgba(5, 6, 9, 0.28);
+}
+
+.invoice-decision-card.is-accepted {
+  border-color: rgba(154, 245, 207, 0.16);
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.07), transparent 54%),
+    rgba(5, 6, 9, 0.28);
+}
+
+.invoice-decision-card.is-review {
+  border-color: rgba(226, 193, 116, 0.18);
+  background:
+    linear-gradient(145deg, rgba(226, 193, 116, 0.065), transparent 54%),
+    rgba(5, 6, 9, 0.28);
+}
+
+.invoice-decision-card svg {
+  color: var(--color-accent);
+}
+
+.invoice-decision-card.is-review svg {
+  color: var(--color-gold);
+}
+
+.invoice-decision-card > span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.invoice-decision-card code {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 820;
+}
+
+.invoice-decision-card p {
+  margin: 0;
+  color: var(--color-muted-strong);
+  line-height: 1.6;
+}
+
+.invoice-ledger-row {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.42fr) minmax(0, 1.58fr);
+  gap: clamp(18px, 3vw, 30px);
+  align-items: center;
+}
+
+.invoice-ledger-row.is-review-row {
+  grid-template-columns: minmax(230px, 0.48fr) minmax(0, 1.52fr);
+}
+
+.invoice-ledger-row.is-review-row .invoice-ledger-copy {
+  background:
+    linear-gradient(145deg, rgba(226, 193, 116, 0.06), transparent 48%),
+    rgba(255, 255, 255, 0.024);
+}
+
+.invoice-evidence-grid {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.62fr) minmax(280px, 1fr) minmax(210px, 0.68fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.invoice-evidence-grid .invoice-image-panel {
+  min-height: 420px;
+}
+
+.invoice-demo-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.invoice-demo-note p + p {
+  margin-top: 16px;
+}
+
+.invoice-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.invoice-scope-card.is-evolution {
+  background:
+    linear-gradient(145deg, rgba(154, 245, 207, 0.068), transparent 48%),
+    rgba(255, 255, 255, 0.026);
+}
+
+.invoice-scope-list {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.invoice-scope-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--color-muted-strong);
+  font-size: 0.91rem;
+  line-height: 1.54;
+}
+
+.invoice-scope-list li::before {
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  content: "";
+  background: var(--color-gold);
+  box-shadow: 0 0 14px rgba(226, 193, 116, 0.3);
+}
+
+.invoice-footer-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.invoice-footer-panel .badge-list {
+  margin-top: 20px;
+}
+
+.invoice-footer-panel .button {
+  min-width: 210px;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2334,6 +3119,18 @@ p {
   .employee-telegram-section,
   .employee-value-panel,
   .employee-github-panel,
+  .support-case-intro,
+  .support-feature-grid,
+  .support-scope-grid,
+  .support-tech-row,
+  .support-github-panel,
+  .invoice-case-intro,
+  .invoice-problem-layout,
+  .invoice-extraction-section,
+  .invoice-ledger-row,
+  .invoice-ledger-row.is-review-row,
+  .invoice-scope-grid,
+  .invoice-footer-panel,
   .case-study-intro,
   .case-study-split {
     grid-template-columns: 1fr;
@@ -2376,7 +3173,11 @@ p {
   .business-banner-card,
   .business-image-panel,
   .employee-banner-card,
-  .employee-image-panel {
+  .employee-image-panel,
+  .support-banner-card,
+  .support-image-panel,
+  .invoice-banner-card,
+  .invoice-image-panel {
     max-width: 820px;
   }
 
@@ -2388,6 +3189,28 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .support-flow-list,
+  .support-intent-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .invoice-stage-line {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .invoice-stage-line li::after {
+    display: none;
+  }
+
+  .invoice-evidence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .invoice-demo-note {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
   .employee-focus-row {
     grid-template-columns: 1fr;
   }
@@ -2397,7 +3220,9 @@ p {
   }
 
   .business-github-panel .button,
-  .employee-github-panel .button {
+  .employee-github-panel .button,
+  .support-github-panel .button,
+  .invoice-footer-panel .button {
     justify-self: start;
   }
 }
@@ -2535,13 +3360,26 @@ p {
   .employee-image-panel-workflow img,
   .employee-image-panel-wide img,
   .employee-image-panel-dashboard img,
-  .employee-image-panel-report img {
+  .employee-image-panel-report img,
+  .support-banner-card img,
+  .support-image-panel img,
+  .support-image-panel-wide img,
+  .support-image-panel-compact img,
+  .invoice-banner-card img,
+  .invoice-image-panel img,
+  .invoice-image-panel-wide img,
+  .invoice-image-panel-extraction img,
+  .invoice-image-panel-ledger img,
+  .invoice-image-panel-portrait img,
+  .invoice-image-panel-document img {
     max-height: 430px;
   }
 
   .case-study-image-link span,
   .business-image-panel span,
-  .employee-image-panel span {
+  .employee-image-panel span,
+  .support-image-panel span,
+  .invoice-image-panel span {
     position: static;
     width: fit-content;
     margin-top: 12px;
@@ -2551,12 +3389,46 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .support-flow-list,
+  .support-intent-grid,
+  .support-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .invoice-stage-line,
+  .invoice-field-grid,
+  .invoice-decision-grid,
+  .invoice-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .invoice-demo-note {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .invoice-evidence-grid .invoice-image-panel {
+    min-height: 0;
+  }
+
   .business-feature-copy,
   .business-value-row,
   .business-github-panel,
   .employee-section-copy,
   .employee-value-panel,
-  .employee-github-panel {
+  .employee-github-panel,
+  .support-feature-copy,
+  .support-scope-card,
+  .support-tech-row,
+  .support-github-panel,
+  .invoice-problem-card,
+  .invoice-solution-card,
+  .invoice-extraction-copy,
+  .invoice-decision-section,
+  .invoice-ledger-copy,
+  .invoice-demo-note,
+  .invoice-scope-card,
+  .invoice-footer-panel {
     padding: 20px;
   }
 
@@ -2615,8 +3487,26 @@ p {
   .employee-image-panel-workflow img,
   .employee-image-panel-wide img,
   .employee-image-panel-dashboard img,
-  .employee-image-panel-report img {
+  .employee-image-panel-report img,
+  .support-banner-card img,
+  .support-image-panel img,
+  .support-image-panel-wide img,
+  .support-image-panel-compact img,
+  .invoice-banner-card img,
+  .invoice-image-panel img,
+  .invoice-image-panel-wide img,
+  .invoice-image-panel-extraction img,
+  .invoice-image-panel-ledger img,
+  .invoice-image-panel-portrait img,
+  .invoice-image-panel-document img {
     max-height: 340px;
+  }
+
+  .support-banner-card,
+  .support-image-panel,
+  .invoice-banner-card,
+  .invoice-image-panel {
+    padding: 10px;
   }
 
   .hero-focus-list span {

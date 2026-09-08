@@ -5,7 +5,7 @@ import TechIcon from './TechIcon.jsx';
 function ProjectCard({ project, index }) {
   const hasGithubLink = project.githubUrl && project.githubUrl !== '#';
   const hasCaseStudyLink = project.caseStudyUrl && project.caseStudyUrl !== '#';
-  const projectNumber = project.displayNumber ?? index + 1;
+  const projectNumber = index + 1;
 
   return (
     <article
