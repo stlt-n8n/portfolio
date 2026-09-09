@@ -3,12 +3,17 @@ import { useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import CustomerSupportCaseStudy from '../components/CustomerSupportCaseStudy.jsx';
 import InvoiceProcessingCaseStudy from '../components/InvoiceProcessingCaseStudy.jsx';
+import KnowledgeRagCaseStudy from '../components/KnowledgeRagCaseStudy.jsx';
 import OrderPulseBusinessCaseStudy from '../components/OrderPulseBusinessCaseStudy.jsx';
 import OrderPulseEmployeeCaseStudy from '../components/OrderPulseEmployeeCaseStudy.jsx';
 import ProjectCaseStudy from '../components/ProjectCaseStudy.jsx';
 import { projects } from '../data/siteContent.js';
 
 function ProjectCaseStudyContent({ project }) {
+  if (project.caseStudyType === 'knowledge-rag') {
+    return <KnowledgeRagCaseStudy project={project} />;
+  }
+
   if (project.caseStudyType === 'invoice-processing') {
     return <InvoiceProcessingCaseStudy project={project} />;
   }

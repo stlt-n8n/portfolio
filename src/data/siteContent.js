@@ -76,7 +76,7 @@ export const projects = [
   {
     id: 'orderpulse-business-analytics',
     slug: 'orderpulse-business-analytics',
-    featured: true,
+    featured: false,
     caseStudyType: 'orderpulse-business',
     title: 'OrderPulse Business Analytics',
     subtitle: 'Business Analytics & Operational Reporting Automation',
@@ -458,6 +458,134 @@ export const projects = [
     githubLabel: 'GitHub',
     caseStudyLabel: 'View Case Study',
     caseStudyUrl: '/projects/ai-invoice-processing-automation',
+  },
+  {
+    id: 'company-knowledge-rag-assistant',
+    slug: 'company-knowledge-rag-assistant',
+    featured: true,
+    caseStudyType: 'knowledge-rag',
+    title: 'AI Company Knowledge Assistant - RAG',
+    subtitle: 'RAG-Based Internal Knowledge & Policy Assistant',
+    variant: 'rag',
+    description:
+      'Fictional company policies are embedded in Supabase, relevant context is retrieved through semantic search, and OpenAI generates grounded internal answers.',
+    image: '/images/company-knowledge-rag-assistant/banner.png',
+    imageWidth: 1774,
+    imageHeight: 887,
+    problem:
+      'Company policies, internal procedures, and SOPs often live across multiple documents. Employees spend time searching manually, reading long policies, or asking colleagues the same recurring questions.',
+    solution:
+      'The workflow separates knowledge ingestion from question answering. Fictional policy documents are embedded and stored in a Supabase pgvector vector store, while each employee question retrieves relevant company context before OpenAI generates a grounded answer.',
+    ingestionFlow: [
+      'Company Policies',
+      'Prepare Documents',
+      'Load Document',
+      'OpenAI Embeddings',
+      'Supabase Vector Store',
+    ],
+    answeringFlow: [
+      'Employee Question',
+      'Question Embedding',
+      'Semantic Search',
+      'Retrieve Relevant Documents',
+      'Aggregate Context',
+      'OpenAI Grounded Answer',
+    ],
+    policies: [
+      'Vacation Policy',
+      'Remote Work Policy',
+      'IT Support Policy',
+      'Expense Policy',
+      'Employee Onboarding Policy',
+    ],
+    media: [
+      {
+        title: 'RAG Architecture',
+        src: '/images/company-knowledge-rag-assistant/workflow-overview.png',
+        width: 1224,
+        height: 1172,
+        description:
+          'The n8n workflow keeps manual knowledge ingestion separate from webhook-based question answering, retrieval, context aggregation, and response generation.',
+      },
+      {
+        title: 'Supabase Vector Store',
+        src: '/images/company-knowledge-rag-assistant/knowledge-base-supabase.png',
+        width: 1902,
+        height: 424,
+        description:
+          'The Supabase documents table stores policy content, document metadata, and pgvector embeddings for semantic retrieval.',
+      },
+      {
+        title: 'Semantic Search',
+        src: '/images/company-knowledge-rag-assistant/semantic-search.png',
+        width: 1856,
+        height: 1130,
+        description:
+          'A question embedding is matched against the vector store to retrieve relevant policy documents together with similarity scores.',
+      },
+      {
+        title: 'Grounded Answer',
+        src: '/images/company-knowledge-rag-assistant/rag-answer.png',
+        width: 1828,
+        height: 1378,
+        description:
+          'A question about a stolen company laptop is answered from the fictional IT Support Policy included in the demo knowledge base.',
+      },
+      {
+        title: 'Missing-Knowledge Fallback',
+        src: '/images/company-knowledge-rag-assistant/no-hallucination-response.png',
+        width: 1836,
+        height: 1390,
+        description:
+          'When a maternity-leave policy is not available in the demo knowledge base, the assistant explicitly reports that the information was not found.',
+      },
+    ],
+    scopeLimitations: [
+      'The knowledge base contains fictional demo policies, not confidential company documents.',
+      'Knowledge ingestion is started manually; there is no automatic document synchronization.',
+      'There is no PDF, Google Drive, Notion, or SharePoint ingestion.',
+      'Generated answers do not include source citations or metadata filtering.',
+      'Role-based access control is not implemented.',
+      'There is no reranking, retrieval evaluation framework, or production monitoring.',
+      'The demo has no chat UI or conversation memory.',
+      'This is a portfolio demo, not a production-ready knowledge platform.',
+    ],
+    futureImprovements: [
+      'Add PDF, Google Drive, Notion, and SharePoint ingestion',
+      'Synchronize document updates automatically',
+      'Add metadata filtering and source citations',
+      'Apply role-based access permissions',
+      'Introduce reranking and retrieval evaluation',
+      'Add monitoring and audit visibility',
+      'Build a chat UI with conversation history',
+    ],
+    useCases: [
+      'HR policy assistant',
+      'IT helpdesk knowledge assistant',
+      'Employee onboarding assistant',
+      'Internal SOP search',
+      'Company documentation assistant',
+    ],
+    securityNotes: [
+      'Credentials are not stored in the repository.',
+      'Supabase and OpenAI credentials are configured through n8n Credentials.',
+      'All included policies are fictional demo content.',
+      'A real company deployment would require access controls and a privacy review.',
+    ],
+    technologies: [
+      'n8n',
+      'OpenAI',
+      'OpenAI Embeddings',
+      'Supabase',
+      'PostgreSQL',
+      'pgvector',
+      'Webhooks',
+      'JSON',
+    ],
+    githubUrl: 'https://github.com/stlt-n8n/ai-company-knowledge-rag',
+    githubLabel: 'GitHub',
+    caseStudyLabel: 'View Case Study',
+    caseStudyUrl: '/projects/company-knowledge-rag-assistant',
   },
 ];
 

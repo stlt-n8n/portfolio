@@ -13,7 +13,7 @@ function Projects() {
         <SectionHeader
           eyebrow="Projects"
           title="Featured projects built around practical workflows."
-          description="A closer look at automation projects spanning invoice review, customer support, order operations, business analytics, and AI-powered job match analysis."
+          description="A closer look at AI automation projects spanning job analysis, customer support, invoice review, and grounded company knowledge retrieval."
         />
 
         <ProjectGrid projects={featuredProjects} />
