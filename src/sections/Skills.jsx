@@ -1,15 +1,17 @@
 import SectionHeader from '../components/SectionHeader.jsx';
 import SkillGroup from '../components/SkillGroup.jsx';
-import { skillCategories } from '../data/siteContent.js';
+import { useLanguage } from '../i18n/useLanguage.js';
 
 function Skills() {
+  const { content, t } = useLanguage();
+  const { skillCategories } = content;
   return (
     <section className="section" id="skills">
       <div className="section-shell">
         <SectionHeader
-          eyebrow="Skills"
-          title="A practical toolkit for automation and IT work."
-          description="Tools and systems I use to build automations, connect business workflows, and solve IT problems."
+          eyebrow={t('Skills')}
+          title={t('A practical toolkit for automation and IT work.')}
+          description={t('Tools and systems I use to build automations, connect business workflows, and solve IT problems.')}
         />
 
         <div className="skills-grid">

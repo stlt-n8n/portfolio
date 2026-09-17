@@ -6,13 +6,13 @@ import Hero from '../sections/Hero.jsx';
 import Process from '../sections/Process.jsx';
 import Projects from '../sections/Projects.jsx';
 import Skills from '../sections/Skills.jsx';
-
-const homeTitle = 'Vladyslav Lukianov — AI Automation & IT Specialist';
+import { useLanguage } from '../i18n/useLanguage.js';
 
 function HomePage() {
+  const { language, t } = useLanguage();
   useEffect(() => {
-    document.title = homeTitle;
-  }, []);
+    document.title = t('Vladyslav Lukianov — AI Automation & IT Specialist');
+  }, [language, t]);
 
   return (
     <main>

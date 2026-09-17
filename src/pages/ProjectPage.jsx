@@ -7,7 +7,7 @@ import KnowledgeRagCaseStudy from '../components/KnowledgeRagCaseStudy.jsx';
 import OrderPulseBusinessCaseStudy from '../components/OrderPulseBusinessCaseStudy.jsx';
 import OrderPulseEmployeeCaseStudy from '../components/OrderPulseEmployeeCaseStudy.jsx';
 import ProjectCaseStudy from '../components/ProjectCaseStudy.jsx';
-import { projects } from '../data/siteContent.js';
+import { useLanguage } from '../i18n/useLanguage.js';
 
 function ProjectCaseStudyContent({ project }) {
   if (project.caseStudyType === 'knowledge-rag') {
@@ -35,13 +35,15 @@ function ProjectCaseStudyContent({ project }) {
 
 function ProjectPage() {
   const { slug } = useParams();
+  const { content, language, t } = useLanguage();
+  const { projects } = content;
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
     if (project) {
       document.title = `${project.title} | Vladyslav Lukianov`;
     }
-  }, [project]);
+  }, [language, project]);
 
   if (!project) {
     return <Navigate to="/projects" replace />;
@@ -54,7 +56,7 @@ function ProjectPage() {
           <div className="project-page-actions">
             <Link className="button button-secondary" to="/projects">
               <ArrowLeft size={18} />
-              Back to Projects
+              {t('Back to Projects')}
             </Link>
           </div>
           <ProjectCaseStudyContent project={project} />

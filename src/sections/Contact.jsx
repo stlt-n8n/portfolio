@@ -1,26 +1,24 @@
 import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader.jsx';
-import { contactLinks, profile } from '../data/siteContent.js';
+import { useLanguage } from '../i18n/useLanguage.js';
 
-const iconMap = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-};
+const contactIcons = [Github, Linkedin, Mail];
 
 function Contact() {
+  const { content, t } = useLanguage();
+  const { contactLinks, profile } = content;
   return (
     <section className="section contact-section" id="contact">
       <div className="section-shell contact-layout">
         <SectionHeader
-          eyebrow="Contact"
-          title="Let’s connect around practical automation work."
+          eyebrow={t('Contact')}
+          title={t('Let’s connect around practical automation work.')}
           description={profile.availability}
         />
 
         <div className="contact-list reveal">
-          {contactLinks.map((link) => {
-            const Icon = iconMap[link.label] || ArrowUpRight;
+          {contactLinks.map((link, index) => {
+            const Icon = contactIcons[index] || ArrowUpRight;
             const opensInNewTab = true;
 
             return (
@@ -30,7 +28,7 @@ function Contact() {
                 key={link.label}
                 target={opensInNewTab ? '_blank' : undefined}
                 rel={opensInNewTab ? 'noopener noreferrer' : undefined}
-                aria-label={`${link.label}: ${link.value}. Opens in a new tab.`}
+                aria-label={t('{label}: {value}. Opens in a new tab.', { label: link.label, value: link.value })}
               >
                 <span className="contact-icon">
                   <Icon size={20} />

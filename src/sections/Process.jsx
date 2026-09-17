@@ -1,14 +1,16 @@
 import SectionHeader from '../components/SectionHeader.jsx';
-import { processSteps } from '../data/siteContent.js';
+import { useLanguage } from '../i18n/useLanguage.js';
 
 function Process() {
+  const { content, t } = useLanguage();
+  const { processSteps } = content;
   return (
     <section className="section process-section" id="process">
       <div className="section-shell">
         <SectionHeader
-          eyebrow="Process"
-          title="A simple process for useful automation."
-          description="The goal is not to automate everything. The goal is to understand the work, then build the smallest reliable system that improves it."
+          eyebrow={t('Process')}
+          title={t('A simple process for useful automation.')}
+          description={t('The goal is not to automate everything. The goal is to understand the work, then build the smallest reliable system that improves it.')}
         />
 
         <div className="process-timeline">

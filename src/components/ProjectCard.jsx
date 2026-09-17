@@ -1,8 +1,10 @@
 import { ArrowUpRight, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../i18n/useLanguage.js';
 import TechIcon from './TechIcon.jsx';
 
 function ProjectCard({ project, index }) {
+  const { t } = useLanguage();
   const hasGithubLink = project.githubUrl && project.githubUrl !== '#';
   const hasCaseStudyLink = project.caseStudyUrl && project.caseStudyUrl !== '#';
   const projectNumber = index + 1;
@@ -16,7 +18,7 @@ function ProjectCard({ project, index }) {
       <div className={`project-image-wrap project-visual-${project.variant}`}>
         <img
           src={project.image}
-          alt={`${project.title} project preview`}
+          alt={t('{title} project preview', { title: project.title })}
           width={project.imageWidth}
           height={project.imageHeight}
           loading="lazy"
@@ -26,13 +28,13 @@ function ProjectCard({ project, index }) {
 
       <div className="project-content">
         <div>
-          <span className="project-kicker">Project {String(projectNumber).padStart(2, '0')}</span>
+          <span className="project-kicker">{t('Project')} {String(projectNumber).padStart(2, '0')}</span>
           <h3>{project.title}</h3>
-          <span className="project-status">{project.subtitle || 'Workflow case study'}</span>
+          <span className="project-status">{project.subtitle || t('Workflow case study')}</span>
           <p>{project.description}</p>
         </div>
 
-        <div className="badge-list" aria-label={`${project.title} technologies`}>
+        <div className="badge-list" aria-label={t('{title} technologies', { title: project.title })}>
           {project.technologies.map((technology) => (
             <span className="badge" key={technology}>
               <TechIcon name={technology} />
@@ -49,7 +51,7 @@ function ProjectCard({ project, index }) {
                 href={project.githubUrl}
                 target={project.githubUrl.startsWith('http') ? '_blank' : undefined}
                 rel={project.githubUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-                aria-label={`Open ${project.title} repository on GitHub`}
+                aria-label={t('Open {title} repository on GitHub', { title: project.title })}
               >
                 <Github size={18} />
                 {project.githubLabel || 'GitHub'}
@@ -57,7 +59,7 @@ function ProjectCard({ project, index }) {
             ) : null}
             {hasCaseStudyLink ? (
               <Link className="button button-primary" to={project.caseStudyUrl}>
-                View Case Study
+                {t('View Case Study')}
                 <ArrowUpRight size={18} />
               </Link>
             ) : null}

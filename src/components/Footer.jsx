@@ -1,6 +1,8 @@
-import { profile } from '../data/siteContent.js';
+import { useLanguage } from '../i18n/useLanguage.js';
 
 function Footer() {
+  const { content } = useLanguage();
+  const { profile } = content;
   return (
     <footer className="footer">
       <p>{profile.name}</p>

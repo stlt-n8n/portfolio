@@ -6,6 +6,7 @@ import ScrollToHash from './components/ScrollToHash.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ProjectPage from './pages/ProjectPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
+import PortfolioAssistant from './components/assistant/PortfolioAssistant.jsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
+      <PortfolioAssistant />
     </>
   );
 }

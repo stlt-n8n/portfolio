@@ -202,6 +202,62 @@ img {
   transform: scaleX(1);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.language-selector button {
+  min-width: 38px;
+  min-height: 34px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 5px;
+  color: var(--color-muted);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.language-selector button:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.language-selector button:active {
+  transform: translateY(1px);
+}
+
+.language-selector button.is-active {
+  color: #07100d;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-accent));
+  box-shadow: 0 7px 20px rgba(154, 245, 207, 0.12);
+}
+
+.language-selector button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline-offset: 2px;
+}
+
 .icon-button {
   display: inline-grid;
   width: 42px;
@@ -338,6 +394,22 @@ h1 {
   line-height: 0.88;
   letter-spacing: 0;
   text-wrap: balance;
+}
+
+html:lang(de) h1,
+html:lang(ru) h1 {
+  overflow-wrap: anywhere;
+  line-height: 0.94;
+}
+
+@media (min-width: 981px) {
+  html:lang(de) h1 {
+    font-size: clamp(4rem, 5.3vw, 5.1rem);
+  }
+
+  html:lang(ru) h1 {
+    font-size: clamp(3.75rem, 4.95vw, 4.75rem);
+  }
 }
 
 h2 {
@@ -3864,6 +3936,12 @@ p {
     width: min(calc(100% - 24px), var(--max-width));
   }
 
+  .language-selector button {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 7px 6px;
+  }
+
   .menu-button {
     display: inline-grid;
   }
@@ -3915,6 +3993,11 @@ p {
   h1 {
     font-size: clamp(3.08rem, 13.4vw, 4.65rem);
     line-height: 0.93;
+  }
+
+  html:lang(de) h1,
+  html:lang(ru) h1 {
+    font-size: clamp(2.2rem, 10.8vw, 3.8rem);
   }
 
   h2 {
@@ -4105,6 +4188,15 @@ p {
 @media (max-width: 460px) {
   .brand span:last-child {
     display: none;
+  }
+
+  .site-header {
+    padding-left: 12px;
+    padding-right: 10px;
+  }
+
+  .header-actions {
+    gap: 7px;
   }
 
   .hero-actions .button,
