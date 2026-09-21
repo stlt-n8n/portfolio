@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import RevealOnScroll from './components/RevealOnScroll.jsx';
+import SeoMetadata from './components/SeoMetadata.jsx';
 import ScrollToHash from './components/ScrollToHash.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ProjectPage from './pages/ProjectPage.jsx';
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <ScrollToHash />
+      <SeoMetadata />
       <RevealOnScroll />
       <Header />
       <Routes>

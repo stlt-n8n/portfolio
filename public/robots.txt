@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-stlt-n8n1.vercel.app/sitemap.xml
