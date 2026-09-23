@@ -328,6 +328,79 @@ export const ru = {
     'A real company deployment would require access controls and a privacy review.':
       'Для реального внедрения в компании потребуются контроль доступа и проверка требований к конфиденциальности.',
 
+    // AI Portfolio Assistant & Lead Qualification
+    'AI Portfolio Assistant & Lead Qualification': 'AI-ассистент портфолио и квалификация лидов',
+    'Portfolio RAG, intent routing & lead qualification':
+      'RAG для портфолио, маршрутизация запросов и квалификация лидов',
+    'An AI assistant for my portfolio that combines RAG, intent routing, conversation context, and lead qualification through n8n, OpenAI, and Supabase.':
+      'AI-ассистент для моего портфолио: объединяет RAG, маршрутизацию запросов, контекст диалога и квалификацию лидов с помощью n8n, OpenAI и Supabase.',
+    'A static portfolio presents projects, but visitors still have to search manually for relevant experience, technologies, and capabilities.':
+      'Статичное портфолио показывает проекты, но посетителю приходится самому искать сведения об опыте, технологиях и навыках, которые важны именно ему.',
+    'The assistant uses curated portfolio knowledge to answer relevant questions, directs potential work inquiries to a dedicated lead path, and keeps unrelated requests outside the portfolio scope.':
+      'Ассистент отвечает на вопросы по подготовленной базе знаний портфолио, отдельно обрабатывает запросы о работе и сотрудничестве и не выходит за рамки темы портфолио.',
+    'The Vercel-hosted website reaches a local n8n webhook through a temporary Cloudflare HTTPS tunnel. After normalization and validation, GPT-4.1-mini classifies the request and routes it to one of three paths.':
+      'Сайт на Vercel обращается к локальному webhook n8n через временный HTTPS-туннель Cloudflare. После нормализации и проверки GPT-4.1-mini классифицирует запрос и направляет его по одному из трёх сценариев.',
+    'Retrieves relevant portfolio knowledge from Supabase and generates a grounded answer.':
+      'Находит подходящие сведения о портфолио в Supabase и формирует ответ на их основе.',
+    'Retrieves relevant capabilities and responds to hiring or project inquiries with a public contact CTA.':
+      'Находит сведения о подходящих компетенциях и отвечает на предложения о работе или проекте, предлагая открытые способы связи.',
+    'Returns a fixed portfolio-scoped reply without invoking the general answer flow.':
+      'Возвращает готовый ответ о тематике портфолио, не запуская обычную генерацию.',
+    'The repository contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks. The repository does not verify the live vector-row count.':
+      'В репозитории находятся 49 подготовленных фрагментов знаний о портфолио. OpenAI text-embedding-3-small создаёт векторы размерности 1536 для Supabase PostgreSQL/pgvector; поиск настроен на выдачу до четырёх подходящих фрагментов. Репозиторий не подтверждает фактическое число записей в рабочем индексе.',
+    'The frontend sends up to eight previous user and assistant messages with each request. History helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source. The backend does not retain conversations between requests.':
+      'С каждым запросом frontend передаёт до восьми предыдущих сообщений пользователя и ассистента. История помогает понять уточняющие вопросы, но источником фактов остаются найденные материалы портфолио. Backend не сохраняет диалог между запросами.',
+    'A separate lead path handles hiring, collaboration, and automation inquiries. It can point visitors to public contact details, but the current MVP does not store leads in a CRM or trigger lead alerts.':
+      'Отдельный сценарий обрабатывает предложения о работе, сотрудничестве и автоматизации. Он может подсказать открытые контакты, но в текущем MVP лиды не сохраняются в CRM и уведомления о них не отправляются.',
+    'Grounded portfolio answer': 'Ответ на основе данных портфолио',
+    'The assistant answers a question about technologies using retrieved portfolio knowledge.':
+      'Ассистент отвечает на вопрос о технологиях, опираясь на найденные материалы портфолио.',
+    'Contextual follow-up': 'Уточняющий вопрос',
+    'A follow-up about a RAG project stays connected to the preceding conversation.':
+      'Вопрос о RAG-проекте учитывает предшествующий контекст диалога.',
+    'Potential lead': 'Запрос о сотрудничестве',
+    'An invoice automation inquiry follows the lead-aware response path.':
+      'Запрос об автоматизации счетов обрабатывается по сценарию для потенциальных клиентов.',
+    'Intent-routing workflow': 'Воркфлоу маршрутизации запросов',
+    'The n8n workflow validates messages and routes portfolio questions, potential leads, and off-topic requests.':
+      'Воркфлоу n8n проверяет сообщения и разделяет вопросы о портфолио, запросы о сотрудничестве и сообщения не по теме.',
+    'Knowledge ingestion workflow': 'Воркфлоу загрузки знаний',
+    'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.':
+      'Отдельный воркфлоу n8n готовит сведения о портфолио для создания векторов и хранения в Supabase.',
+    'The public Portfolio currently presents the assistant in DEMO MODE; its live backend is not enabled in this build.':
+      'На публичном сайте ассистент сейчас работает в DEMO MODE; live backend в этой сборке не включён.',
+    'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.':
+      'n8n работает локально через временный Cloudflare Quick Tunnel. Доступность backend зависит от работы локального компьютера и туннеля.',
+    'Conversation history is request-scoped; there is no persistent server-side memory.':
+      'История передаётся только в рамках запроса; постоянного хранения диалогов на сервере нет.',
+    'Potential leads are not stored in a CRM.':
+      'Потенциальные клиенты не сохраняются в CRM.',
+    'The public webhook does not yet have production-grade authentication or rate limiting.':
+      'Для публичного webhook пока не реализованы аутентификация и ограничение частоты запросов уровня production.',
+    'A production rollout would require stable backend hosting, a permanent domain, webhook authentication, rate limiting, and privacy-aware persistence for conversations or leads.':
+      'Для production-версии нужны стабильный хостинг backend, постоянный домен, защита webhook, ограничение частоты запросов и хранение диалогов или лидов с учётом приватности.',
+    'Project 07 · Case Study': 'Проект 07 · Кейс',
+    'Open screenshot': 'Открыть скриншот',
+    'Assistant in action': 'Ассистент в работе',
+    'Portfolio answers, follow-ups, and lead inquiries':
+      'Ответы о портфолио, уточнения и запросы о сотрудничестве',
+    'Real chat examples show the visitor experience; the public site currently displays a demo preview.':
+      'Реальные примеры чата показывают работу ассистента; на публичном сайте сейчас доступна демо-версия.',
+    Architecture: 'Архитектура',
+    'One entry point, three intent paths': 'Одна точка входа, три сценария',
+    'RAG & Knowledge Base': 'RAG и база знаний',
+    'Curated facts before generated answers': 'Сначала проверенные факты, затем ответ',
+    'Conversation Context': 'Контекст диалога',
+    'Lead Qualification': 'Квалификация лидов',
+    'Workflow Evidence': 'Воркфлоу проекта',
+    'The routing and ingestion workflows': 'Маршрутизация и загрузка знаний',
+    'These n8n screenshots document the backend paths behind the chat examples.':
+      'На скриншотах n8n показаны backend-сценарии, которые стоят за примерами чата.',
+    'Current MVP Limitations': 'Текущие ограничения MVP',
+    'What remains before a production rollout': 'Что нужно до полноценного запуска',
+    'AI portfolio assistant built with n8n, OpenAI, Supabase and RAG, featuring intent routing, contextual follow-ups and lead qualification.':
+      'AI-ассистент портфолио на n8n, OpenAI, Supabase и RAG: маршрутизация запросов, ответы с учётом контекста и квалификация лидов.',
+
     // Meta content
     'Vladyslav Lukianov is an AI Automation & IT Specialist who builds practical n8n workflows, business automations, and operational tools.':
       'Vladyslav Lukianov — специалист по AI-автоматизации и IT, создающий практичные n8n-воркфлоу, бизнес-автоматизации и операционные инструменты.',

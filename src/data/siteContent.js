@@ -587,6 +587,105 @@ export const projects = [
     caseStudyLabel: 'View Case Study',
     caseStudyUrl: '/projects/company-knowledge-rag-assistant',
   },
+  {
+    id: 'ai-portfolio-assistant',
+    slug: 'ai-portfolio-assistant',
+    featured: false,
+    caseStudyType: 'portfolio-assistant',
+    title: 'AI Portfolio Assistant & Lead Qualification',
+    subtitle: 'Portfolio RAG, intent routing & lead qualification',
+    variant: 'rag',
+    description:
+      'An AI assistant for my portfolio that combines RAG, intent routing, conversation context, and lead qualification through n8n, OpenAI, and Supabase.',
+    image: '/images/ai-portfolio-assistant/banner.png',
+    imageWidth: 1536,
+    imageHeight: 1024,
+    heroImage: '/images/ai-portfolio-assistant/banner.png',
+    heroImageWidth: 1536,
+    heroImageHeight: 1024,
+    problem:
+      'A static portfolio presents projects, but visitors still have to search manually for relevant experience, technologies, and capabilities.',
+    solution:
+      'The assistant uses curated portfolio knowledge to answer relevant questions, directs potential work inquiries to a dedicated lead path, and keeps unrelated requests outside the portfolio scope.',
+    architecture:
+      'The Vercel-hosted website reaches a local n8n webhook through a temporary Cloudflare HTTPS tunnel. After normalization and validation, GPT-4.1-mini classifies the request and routes it to one of three paths.',
+    intentRoutes: [
+      {
+        name: 'PORTFOLIO_QUESTION',
+        description: 'Retrieves relevant portfolio knowledge from Supabase and generates a grounded answer.',
+      },
+      {
+        name: 'POTENTIAL_LEAD',
+        description: 'Retrieves relevant capabilities and responds to hiring or project inquiries with a public contact CTA.',
+      },
+      {
+        name: 'OFF_TOPIC',
+        description: 'Returns a fixed portfolio-scoped reply without invoking the general answer flow.',
+      },
+    ],
+    knowledge:
+      'The repository contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks. The repository does not verify the live vector-row count.',
+    context:
+      'The frontend sends up to eight previous user and assistant messages with each request. History helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source. The backend does not retain conversations between requests.',
+    lead:
+      'A separate lead path handles hiring, collaboration, and automation inquiries. It can point visitors to public contact details, but the current MVP does not store leads in a CRM or trigger lead alerts.',
+    media: [
+      {
+        title: 'Grounded portfolio answer',
+        description: 'The assistant answers a question about technologies using retrieved portfolio knowledge.',
+        src: '/images/ai-portfolio-assistant/live-chat-rag.png',
+        width: 870,
+        height: 1314,
+      },
+      {
+        title: 'Contextual follow-up',
+        description: 'A follow-up about a RAG project stays connected to the preceding conversation.',
+        src: '/images/ai-portfolio-assistant/live-chat-followup.png',
+        width: 862,
+        height: 1312,
+      },
+      {
+        title: 'Potential lead',
+        description: 'An invoice automation inquiry follows the lead-aware response path.',
+        src: '/images/ai-portfolio-assistant/live-chat-lead.png',
+        width: 862,
+        height: 1302,
+      },
+      {
+        title: 'Intent-routing workflow',
+        description: 'The n8n workflow validates messages and routes portfolio questions, potential leads, and off-topic requests.',
+        src: '/images/ai-portfolio-assistant/workflow-overview.png',
+        width: 2018,
+        height: 1114,
+      },
+      {
+        title: 'Knowledge ingestion workflow',
+        description: 'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.',
+        src: '/images/ai-portfolio-assistant/knowledge-ingestion-workflow.png',
+        width: 1666,
+        height: 774,
+      },
+    ],
+    scopeLimitations: [
+      'The public Portfolio currently presents the assistant in DEMO MODE; its live backend is not enabled in this build.',
+      'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.',
+      'Conversation history is request-scoped; there is no persistent server-side memory.',
+      'Potential leads are not stored in a CRM.',
+      'The public webhook does not yet have production-grade authentication or rate limiting.',
+    ],
+    nextSteps:
+      'A production rollout would require stable backend hosting, a permanent domain, webhook authentication, rate limiting, and privacy-aware persistence for conversations or leads.',
+    cardTechnologies: ['n8n', 'OpenAI', 'Supabase', 'RAG', 'pgvector', 'Vercel'],
+    technologies: [
+      'n8n', 'OpenAI API', 'GPT-4.1-mini', 'text-embedding-3-small',
+      'Supabase', 'PostgreSQL', 'pgvector', 'REST / Webhooks',
+      'Cloudflare Tunnel', 'React', 'Vite', 'Vercel',
+    ],
+    githubUrl: 'https://github.com/stlt-n8n/ai-portfolio-assistant',
+    githubLabel: 'GitHub',
+    caseStudyLabel: 'View Case Study',
+    caseStudyUrl: '/projects/ai-portfolio-assistant',
+  },
 ];
 
 export const skillCategories = [

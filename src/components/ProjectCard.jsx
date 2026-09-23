@@ -35,7 +35,7 @@ function ProjectCard({ project, index }) {
         </div>
 
         <div className="badge-list" aria-label={t('{title} technologies', { title: project.title })}>
-          {project.technologies.map((technology) => (
+          {(project.cardTechnologies ?? project.technologies).map((technology) => (
             <span className="badge" key={technology}>
               <TechIcon name={technology} />
               {technology}

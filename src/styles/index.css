@@ -1473,6 +1473,91 @@ p {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.portfolio-assistant-chat-grid,
+.portfolio-assistant-route-grid,
+.portfolio-assistant-workflow-grid {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.portfolio-assistant-chat-grid,
+.portfolio-assistant-route-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.portfolio-assistant-workflow-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.portfolio-assistant-screenshot {
+  min-width: 0;
+  margin: 0;
+}
+
+.portfolio-assistant-chat-grid .portfolio-assistant-screenshot {
+  width: 100%;
+  max-width: 310px;
+  justify-self: center;
+}
+
+.portfolio-assistant-screenshot .case-study-image-link img {
+  max-height: 430px;
+}
+
+.portfolio-assistant-screenshot figcaption {
+  padding: 14px 2px 0;
+}
+
+.portfolio-assistant-screenshot figcaption strong {
+  color: var(--color-text);
+}
+
+.portfolio-assistant-screenshot figcaption p {
+  margin: 7px 0 0;
+  color: var(--color-muted-strong);
+  line-height: 1.6;
+}
+
+.portfolio-assistant-route-grid .case-study-note {
+  min-height: 0;
+}
+
+.portfolio-assistant-route-grid .case-study-note span {
+  overflow-wrap: anywhere;
+}
+
+.portfolio-assistant-detail-grid {
+  margin-top: 0;
+}
+
+.portfolio-assistant-limitations {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--color-muted-strong);
+  line-height: 1.65;
+}
+
+.portfolio-assistant-case-study .case-study-footer .badge-list {
+  margin: 0 0 24px;
+}
+
+@media (max-width: 980px) {
+  .portfolio-assistant-route-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .portfolio-assistant-chat-grid,
+  .portfolio-assistant-workflow-grid,
+  .portfolio-assistant-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .business-case-study {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.074), transparent 34%),

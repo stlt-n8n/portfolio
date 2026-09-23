@@ -6,10 +6,15 @@ import InvoiceProcessingCaseStudy from '../components/InvoiceProcessingCaseStudy
 import KnowledgeRagCaseStudy from '../components/KnowledgeRagCaseStudy.jsx';
 import OrderPulseBusinessCaseStudy from '../components/OrderPulseBusinessCaseStudy.jsx';
 import OrderPulseEmployeeCaseStudy from '../components/OrderPulseEmployeeCaseStudy.jsx';
+import PortfolioAssistantCaseStudy from '../components/PortfolioAssistantCaseStudy.jsx';
 import ProjectCaseStudy from '../components/ProjectCaseStudy.jsx';
 import { useLanguage } from '../i18n/useLanguage.js';
 
 function ProjectCaseStudyContent({ project }) {
+  if (project.caseStudyType === 'portfolio-assistant') {
+    return <PortfolioAssistantCaseStudy project={project} />;
+  }
+
   if (project.caseStudyType === 'knowledge-rag') {
     return <KnowledgeRagCaseStudy project={project} />;
   }
