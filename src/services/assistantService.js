@@ -1,10 +1,12 @@
 export const ASSISTANT_MESSAGE_LIMIT = 2000;
-const ASSISTANT_UNAVAILABLE_MESSAGE = 'The assistant is temporarily unavailable. Please try again.';
+export const ASSISTANT_HISTORY_LIMIT = 8;
 const ASSISTANT_DEMO_RESPONSE_DELAY = 650;
+const ASSISTANT_REQUEST_TIMEOUT = 15000;
 
 // Public builds default to demo mode. A future live integration must provide an
 // HTTPS endpoint explicitly; localhost and non-HTTPS endpoints are never used.
-const configuredWebhookUrl = import.meta.env.VITE_ASSISTANT_WEBHOOK_URL;
+const environment = import.meta.env ?? {};
+const configuredWebhookUrl = environment.VITE_ASSISTANT_WEBHOOK_URL;
 const isSafeLiveWebhook = (() => {
   try {
     return new URL(configuredWebhookUrl).protocol === 'https:';
@@ -13,7 +15,7 @@ const isSafeLiveWebhook = (() => {
   }
 })();
 
-export const ASSISTANT_MODE = import.meta.env.VITE_ASSISTANT_MODE === 'live' && isSafeLiveWebhook
+export const ASSISTANT_MODE = environment.VITE_ASSISTANT_MODE === 'live' && isSafeLiveWebhook
   ? 'live'
   : 'demo';
 
@@ -22,6 +24,8 @@ export const ASSISTANT_MODE = import.meta.env.VITE_ASSISTANT_MODE === 'live' && 
  * @property {string} message Trimmed visitor message.
  * @property {string} sessionId Anonymous, in-memory browser session ID.
  * @property {string} currentPage Router pathname at the time of sending.
+ * @property {{role: 'user' | 'assistant', content: string}[]} [history]
+ * Recent, current-browser conversation only. The current message is excluded.
  */
 
 /**
@@ -29,7 +33,7 @@ export const ASSISTANT_MODE = import.meta.env.VITE_ASSISTANT_MODE === 'live' && 
  * live n8n request contract remains available behind an explicit HTTPS config.
  * @param {AssistantRequest} request
  * @param {{signal?: AbortSignal}} [options]
- * @returns {Promise<{message?: string, mode?: 'demo'}>}
+ * @returns {Promise<{message?: string, mode?: 'demo', status?: 'unavailable' | 'error'}>}
  */
 export async function sendAssistantMessage(request, { signal } = {}) {
   if (!request.message.trim() || request.message.length > ASSISTANT_MESSAGE_LIMIT) {
@@ -42,6 +46,26 @@ export async function sendAssistantMessage(request, { signal } = {}) {
   }
 
   return sendLiveAssistantMessage(request, { signal });
+}
+
+/**
+ * Converts UI conversation records into the n8n history contract. Demo,
+ * unavailable and validation messages stay local to the frontend and never
+ * become model context.
+ */
+export function buildAssistantHistory(messages) {
+  return messages
+    .filter((message) => (
+      (message.role === 'user' || message.role === 'assistant')
+      && message.kind !== 'demo'
+      && message.kind !== 'error'
+      && message.kind !== 'loading'
+      && message.kind !== 'system'
+      && typeof message.text === 'string'
+      && Boolean(message.text.trim())
+    ))
+    .slice(-ASSISTANT_HISTORY_LIMIT)
+    .map((message) => ({ role: message.role, content: message.text.trim() }));
 }
 
 function waitForDemoResponse(signal) {
@@ -67,6 +91,17 @@ function waitForDemoResponse(signal) {
 }
 
 async function sendLiveAssistantMessage(request, { signal } = {}) {
+  const controller = new AbortController();
+  const abortRequest = () => controller.abort();
+  const timeout = setTimeout(abortRequest, ASSISTANT_REQUEST_TIMEOUT);
+
+  if (signal?.aborted) {
+    clearTimeout(timeout);
+    throw new DOMException('The operation was aborted.', 'AbortError');
+  }
+
+  signal?.addEventListener('abort', abortRequest, { once: true });
+
   try {
     const response = await fetch(configuredWebhookUrl, {
       method: 'POST',
@@ -75,28 +110,44 @@ async function sendLiveAssistantMessage(request, { signal } = {}) {
         message: request.message,
         sessionId: request.sessionId,
         currentPage: request.currentPage,
+        history: request.history ?? [],
       }),
-      signal,
+      signal: controller.signal,
     });
+
+    const payload = await response.json();
+
+    if (!response.ok && response.status >= 500) {
+      throw new Error(`Assistant webhook responded with ${response.status}.`);
+    }
+
+    if (payload?.success === true && typeof payload.reply === 'string' && payload.reply.trim()) {
+      return { message: payload.reply.trim() };
+    }
+
+    if (payload?.success === false) {
+      return {
+        message: typeof payload.reply === 'string' && payload.reply.trim() ? payload.reply.trim() : undefined,
+        status: 'error',
+      };
+    }
 
     if (!response.ok) {
       throw new Error(`Assistant webhook responded with ${response.status}.`);
     }
 
-    const payload = await response.json();
-    if (!payload?.success || typeof payload.reply !== 'string' || !payload.reply.trim()) {
-      throw new Error('Assistant webhook returned an invalid response payload.');
-    }
-
-    return { message: payload.reply.trim() };
+    throw new Error('Assistant webhook returned an invalid response payload.');
   } catch (error) {
-    if (error.name === 'AbortError') throw error;
+    if (signal?.aborted) throw error;
 
-    if (import.meta.env.DEV) {
+    if (environment.DEV) {
       console.error('Vlad AI Assistant webhook request failed:', error);
     }
 
-    return { message: ASSISTANT_UNAVAILABLE_MESSAGE };
+    return { status: 'unavailable' };
+  } finally {
+    clearTimeout(timeout);
+    signal?.removeEventListener('abort', abortRequest);
   }
 }
 

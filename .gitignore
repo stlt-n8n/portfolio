@@ -3,3 +3,4 @@ dist
 .npm-cache
 .vscode
 .DS_Store
+.env.local

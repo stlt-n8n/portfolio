@@ -4,7 +4,7 @@ import AssistantMessages from './AssistantMessages.jsx';
 import AssistantComposer from './AssistantComposer.jsx';
 import { useLanguage } from '../../i18n/useLanguage.js';
 
-function AssistantPanel({ isOpen, onClose, messages, isSending, error, onSend }) {
+function AssistantPanel({ isOpen, onClose, messages, isSending, error, isDemoMode, onSend }) {
   const { t } = useLanguage();
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
@@ -72,7 +72,7 @@ function AssistantPanel({ isOpen, onClose, messages, isSending, error, onSend })
         <div className="assistant-heading">
           <div className="assistant-title-row">
             <h2 id="assistant-title">Vlad AI Assistant</h2>
-            <span className="assistant-demo">{t('Demo')}</span>
+            {isDemoMode && <span className="assistant-demo">{t('Demo')}</span>}
           </div>
           <p id="assistant-subtitle">{t('Portfolio & Automation Assistant')}</p>
         </div>
@@ -80,8 +80,8 @@ function AssistantPanel({ isOpen, onClose, messages, isSending, error, onSend })
           <X size={19} aria-hidden="true" />
         </button>
       </header>
-      <AssistantMessages messages={messages} isSending={isSending} isOpen={isOpen} onSend={onSend} error={error} />
-      <AssistantComposer inputRef={inputRef} isSending={isSending} onSend={onSend} />
+      <AssistantMessages messages={messages} isSending={isSending} isOpen={isOpen} onSend={onSend} error={error} isDemoMode={isDemoMode} />
+      <AssistantComposer inputRef={inputRef} isSending={isSending} onSend={onSend} isDemoMode={isDemoMode} />
     </dialog>
   );
 }

@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ASSISTANT_MESSAGE_LIMIT, getAssistantSessionId, sendAssistantMessage } from '../../services/assistantService.js';
+import {
+  ASSISTANT_MODE,
+  ASSISTANT_MESSAGE_LIMIT,
+  buildAssistantHistory,
+  getAssistantSessionId,
+  sendAssistantMessage,
+} from '../../services/assistantService.js';
 import AssistantLauncher from './AssistantLauncher.jsx';
 import AssistantPanel from './AssistantPanel.jsx';
 import { useLanguage } from '../../i18n/useLanguage.js';
@@ -32,16 +38,42 @@ function PortfolioAssistant() {
 
     try {
       const response = await sendAssistantMessage(
-        { message, sessionId: getAssistantSessionId(), currentPage: pathname },
+        {
+          message,
+          sessionId: getAssistantSessionId(),
+          currentPage: pathname,
+          history: buildAssistantHistory(messages),
+        },
         { signal: controller.signal },
       );
       if (!controller.signal.aborted) {
-        const responseText = response.mode === 'demo'
-          ? t('The AI assistant is currently in demo mode. Live functionality is coming soon.')
-          : response.message === 'The assistant is temporarily unavailable. Please try again.'
-          ? t('The assistant is temporarily unavailable. Please try again.')
-          : response.message;
-        const reply = { id: ++messageSequence.current, role: 'assistant', text: responseText };
+        const reply = response.mode === 'demo'
+          ? {
+            id: ++messageSequence.current,
+            role: 'assistant',
+            kind: 'demo',
+            text: t('The AI assistant is currently in demo mode. Live functionality is coming soon.'),
+          }
+          : response.status === 'unavailable'
+          ? {
+            id: ++messageSequence.current,
+            role: 'assistant',
+            kind: 'error',
+            text: t('The AI assistant is temporarily unavailable. You can still explore the portfolio or contact Vlad directly.'),
+          }
+          : response.status === 'error'
+          ? {
+            id: ++messageSequence.current,
+            role: 'assistant',
+            kind: 'error',
+            text: response.message ?? t('The AI assistant could not process that message. Please try again.'),
+          }
+          : {
+            id: ++messageSequence.current,
+            role: 'assistant',
+            kind: 'normal',
+            text: response.message,
+          };
         setMessages((current) => [...current, reply]);
       }
     } catch (requestError) {
@@ -65,6 +97,7 @@ function PortfolioAssistant() {
           messages={messages}
           isSending={isSending}
           error={error}
+          isDemoMode={ASSISTANT_MODE === 'demo'}
           onSend={sendMessage}
         />
       )}

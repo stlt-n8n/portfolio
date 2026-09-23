@@ -265,12 +265,15 @@ export const ruUiTranslations = {
   'Suggested questions': 'Варианты вопросов',
   Messages: 'Сообщения',
   'Preparing demo response': 'Готовлю демо-ответ',
+  'Preparing response': 'Готовлю ответ',
   'Latest messages': 'Последние сообщения',
   Demo: 'Демо',
   'Portfolio & Automation Assistant': 'Ассистент по портфолио и автоматизации',
   'Close assistant': 'Закрыть ассистента',
-  'The assistant is temporarily unavailable. Please try again.':
-    'Ассистент временно недоступен. Попробуйте ещё раз.',
+  'The AI assistant is temporarily unavailable. You can still explore the portfolio or contact Vlad directly.':
+    'AI-ассистент временно недоступен. Вы можете продолжить просмотр портфолио или связаться с Владом напрямую.',
+  'The AI assistant could not process that message. Please try again.':
+    'AI-ассистент не смог обработать это сообщение. Попробуйте ещё раз.',
   'The AI assistant is currently in demo mode. Live functionality is coming soon.':
     'AI-ассистент сейчас работает в демо-режиме. Полная функциональность появится в ближайшее время.',
   'The response could not be loaded. Please try sending your message again.':

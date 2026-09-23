@@ -265,12 +265,15 @@ export const deUiTranslations = {
   'Suggested questions': 'Vorgeschlagene Fragen',
   Messages: 'Nachrichten',
   'Preparing demo response': 'Demo-Antwort wird vorbereitet',
+  'Preparing response': 'Antwort wird vorbereitet',
   'Latest messages': 'Neueste Nachrichten',
   Demo: 'Demo',
   'Portfolio & Automation Assistant': 'Portfolio & Automation Assistant',
   'Close assistant': 'Assistenten schließen',
-  'The assistant is temporarily unavailable. Please try again.':
-    'Der Assistent ist vorübergehend nicht verfügbar. Bitte versuchen Sie es erneut.',
+  'The AI assistant is temporarily unavailable. You can still explore the portfolio or contact Vlad directly.':
+    'Der AI Assistant ist vorübergehend nicht verfügbar. Du kannst weiterhin das Portfolio ansehen oder Vlad direkt kontaktieren.',
+  'The AI assistant could not process that message. Please try again.':
+    'Der AI Assistant konnte diese Nachricht nicht verarbeiten. Bitte versuche es erneut.',
   'The AI assistant is currently in demo mode. Live functionality is coming soon.':
     'Der AI Assistant befindet sich derzeit im Demo-Modus. Die Live-Funktionalität folgt in Kürze.',
   'The response could not be loaded. Please try sending your message again.':

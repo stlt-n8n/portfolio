@@ -3,7 +3,7 @@ import { ArrowUp } from 'lucide-react';
 import { ASSISTANT_MESSAGE_LIMIT } from '../../services/assistantService.js';
 import { useLanguage } from '../../i18n/useLanguage.js';
 
-function AssistantComposer({ inputRef, isSending, onSend }) {
+function AssistantComposer({ inputRef, isSending, isDemoMode, onSend }) {
   const { t } = useLanguage();
   const [draft, setDraft] = useState('');
   const canSend = Boolean(draft.trim()) && draft.length <= ASSISTANT_MESSAGE_LIMIT && !isSending;
@@ -35,17 +35,19 @@ function AssistantComposer({ inputRef, isSending, onSend }) {
           }}
           maxLength={ASSISTANT_MESSAGE_LIMIT}
           aria-label={t('Message Vlad AI Assistant')}
-          aria-describedby="assistant-composer-note"
+          aria-describedby={isDemoMode ? 'assistant-composer-note' : undefined}
           placeholder={t("Ask about Vlad's work...")}
         />
         <button className="assistant-send" type="submit" aria-label={t('Send message')} disabled={!canSend}>
           <ArrowUp size={20} aria-hidden="true" />
         </button>
       </div>
-      <div id="assistant-composer-note" className="assistant-composer-note">
-        <span>{t('Demo preview · Messages stay in this tab · Live functionality is coming soon.')}</span>
-        {draft.length >= ASSISTANT_MESSAGE_LIMIT - 200 && <span>{draft.length}/{ASSISTANT_MESSAGE_LIMIT}</span>}
-      </div>
+      {(isDemoMode || draft.length >= ASSISTANT_MESSAGE_LIMIT - 200) && (
+        <div id={isDemoMode ? 'assistant-composer-note' : undefined} className="assistant-composer-note">
+          {isDemoMode && <span>{t('Demo preview · Messages stay in this tab · Live functionality is coming soon.')}</span>}
+          {draft.length >= ASSISTANT_MESSAGE_LIMIT - 200 && <span>{draft.length}/{ASSISTANT_MESSAGE_LIMIT}</span>}
+        </div>
+      )}
     </form>
   );
 }

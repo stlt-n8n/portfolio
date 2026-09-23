@@ -15,7 +15,7 @@ function AssistantMessage({ role, text }) {
   );
 }
 
-function AssistantMessages({ messages, isSending, isOpen, onSend, error }) {
+function AssistantMessages({ messages, isSending, isOpen, onSend, error, isDemoMode }) {
   const { t } = useLanguage();
   const suggestions = [
     t('Explore projects'),
@@ -85,7 +85,7 @@ function AssistantMessages({ messages, isSending, isOpen, onSend, error }) {
           {messages.map((message) => <AssistantMessage key={message.id} {...message} />)}
         </div>
         <div className="assistant-status" role="status">
-          {isSending && <span className="assistant-typing"><span aria-hidden="true"><i /><i /><i /></span>{t('Preparing demo response')}</span>}
+          {isSending && <span className="assistant-typing"><span aria-hidden="true"><i /><i /><i /></span>{t(isDemoMode ? 'Preparing demo response' : 'Preparing response')}</span>}
         </div>
         {error && <p className="assistant-error" role="alert">{error}</p>}
       </div>

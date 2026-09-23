@@ -29,7 +29,7 @@ A small permanent spacer after the footer lets its content clear the launcher.
 `src/services/assistantService.js` exports:
 
 ```js
-sendAssistantMessage({ message, sessionId, currentPage }, { signal })
+sendAssistantMessage({ message, sessionId, currentPage, history }, { signal })
 // Promise<{ message?: string, mode?: 'demo' }>
 ```
 
@@ -37,13 +37,17 @@ Public builds use demo mode by default. Sending a message waits briefly to prese
 the typing state and returns `{ mode: 'demo' }`; the localized UI then displays the
 demo response. This path does not make an HTTP request.
 
-The n8n request structure is retained in `sendLiveAssistantMessage()`: it still
-sends `{ message, sessionId, currentPage }` and maps a successful
+The n8n request structure is retained in `sendLiveAssistantMessage()`: it sends
+`{ message, sessionId, currentPage, history }` and maps a successful
 `{ success: true, reply: string }` payload to `{ message: reply }`. To intentionally
 enable it later, provide both `VITE_ASSISTANT_MODE=live` and an HTTPS
 `VITE_ASSISTANT_WEBHOOK_URL`. Non-HTTPS endpoints are rejected, so a public build
 cannot fall back to localhost. Keep the response shape and cancellation contract
 when connecting the future production endpoint.
+
+`buildAssistantHistory()` uses only the current browser conversation. Before each
+new request, it excludes the new message itself plus demo, loading, system and error
+records, then sends no more than the final eight `{ role, content }` records.
 
 `getAssistantSessionId()` creates an ID on first send with `crypto.randomUUID()`
 (cryptographic random-byte fallback). It stays in module memory, without browser
