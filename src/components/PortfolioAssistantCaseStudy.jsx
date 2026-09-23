@@ -93,7 +93,7 @@ function PortfolioAssistantCaseStudy({ project }) {
         <div className="case-study-block-header">
           <span className="project-kicker">{t('Assistant in action')}</span>
           <h4>{t('Portfolio answers, follow-ups, and lead inquiries')}</h4>
-          <p>{t('Real chat examples show the visitor experience; the public site currently displays a demo preview.')}</p>
+          <p>{t('These real chat examples show the live assistant handling portfolio questions, follow-ups, and project inquiries.')}</p>
         </div>
         <div className="portfolio-assistant-chat-grid">
           {chatMedia.map((media) => <Screenshot key={media.src} media={media} />)}

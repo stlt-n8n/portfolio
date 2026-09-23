@@ -367,8 +367,8 @@ export const de = {
     'Knowledge ingestion workflow': 'Workflow zur Wissensaufnahme',
     'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.':
       'Ein separater n8n Workflow bereitet Portfolio-Wissen für Embeddings und die Speicherung in Supabase auf.',
-    'The public Portfolio currently presents the assistant in DEMO MODE; its live backend is not enabled in this build.':
-      'Im öffentlichen Portfolio läuft der Assistent derzeit im DEMO MODE; das Live-Backend ist in diesem Build nicht aktiviert.',
+    'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.':
+      'Live-Anbindung: Der Assistent ist über einen HTTPS-Tunnel von Cloudflare mit dem n8n-Backend verbunden.',
     'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.':
       'n8n läuft lokal hinter einem temporären Cloudflare Quick Tunnel. Die Erreichbarkeit des Backends hängt daher vom lokalen System und vom Tunnel ab.',
     'Conversation history is request-scoped; there is no persistent server-side memory.':
@@ -384,8 +384,8 @@ export const de = {
     'Assistant in action': 'Assistent im Einsatz',
     'Portfolio answers, follow-ups, and lead inquiries':
       'Portfolio-Antworten, Rückfragen und Projektanfragen',
-    'Real chat examples show the visitor experience; the public site currently displays a demo preview.':
-      'Echte Chat-Beispiele zeigen die Nutzung; auf der öffentlichen Website ist derzeit eine Demo-Vorschau aktiv.',
+    'These real chat examples show the live assistant handling portfolio questions, follow-ups, and project inquiries.':
+      'Die echten Chat-Beispiele zeigen, wie der Live-Assistent Fragen zum Portfolio beantwortet, Rückfragen aufgreift und Projektanfragen bearbeitet.',
     Architecture: 'Architektur',
     'One entry point, three intent paths': 'Ein Einstiegspunkt, drei Intent-Pfade',
     'RAG & Knowledge Base': 'RAG & Wissensbasis',

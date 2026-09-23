@@ -367,8 +367,8 @@ export const ru = {
     'Knowledge ingestion workflow': 'Воркфлоу загрузки знаний',
     'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.':
       'Отдельный воркфлоу n8n готовит сведения о портфолио для создания векторов и хранения в Supabase.',
-    'The public Portfolio currently presents the assistant in DEMO MODE; its live backend is not enabled in this build.':
-      'На публичном сайте ассистент сейчас работает в DEMO MODE; live backend в этой сборке не включён.',
+    'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.':
+      'Интеграция работает: ассистент подключён к backend n8n через HTTPS-туннель Cloudflare Quick Tunnel.',
     'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.':
       'n8n работает локально через временный Cloudflare Quick Tunnel. Доступность backend зависит от работы локального компьютера и туннеля.',
     'Conversation history is request-scoped; there is no persistent server-side memory.':
@@ -384,8 +384,8 @@ export const ru = {
     'Assistant in action': 'Ассистент в работе',
     'Portfolio answers, follow-ups, and lead inquiries':
       'Ответы о портфолио, уточнения и запросы о сотрудничестве',
-    'Real chat examples show the visitor experience; the public site currently displays a demo preview.':
-      'Реальные примеры чата показывают работу ассистента; на публичном сайте сейчас доступна демо-версия.',
+    'These real chat examples show the live assistant handling portfolio questions, follow-ups, and project inquiries.':
+      'На примерах реальных диалогов видно, как live-ассистент отвечает на вопросы о портфолио, учитывает контекст уточнений и обрабатывает запросы о проектах.',
     Architecture: 'Архитектура',
     'One entry point, three intent paths': 'Одна точка входа, три сценария',
     'RAG & Knowledge Base': 'RAG и база знаний',

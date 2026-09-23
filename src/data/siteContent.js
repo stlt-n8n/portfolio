@@ -667,7 +667,7 @@ export const projects = [
       },
     ],
     scopeLimitations: [
-      'The public Portfolio currently presents the assistant in DEMO MODE; its live backend is not enabled in this build.',
+      'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.',
       'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.',
       'Conversation history is request-scoped; there is no persistent server-side memory.',
       'Potential leads are not stored in a CRM.',
