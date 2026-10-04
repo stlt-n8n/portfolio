@@ -1,10 +1,12 @@
 import { ruUiTranslations } from './ruUi.js';
+import { ruShowcaseTranslations } from './showcaseTranslations.js';
 
 export const ru = {
   code: 'ru',
   label: 'RU',
   translations: {
     ...ruUiTranslations,
+    ...ruShowcaseTranslations,
     // Global profile and navigation
     About: 'Обо мне',
     Projects: 'Проекты',

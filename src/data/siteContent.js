@@ -1,3 +1,5 @@
+import { showcaseProjects } from './showcaseProjects.js';
+
 export const profile = {
   name: 'Vladyslav Lukianov',
   title: 'AI Automation & IT Specialist',
@@ -686,6 +688,7 @@ export const projects = [
     caseStudyLabel: 'View Case Study',
     caseStudyUrl: '/projects/ai-portfolio-assistant',
   },
+  ...showcaseProjects,
 ];
 
 export const skillCategories = [

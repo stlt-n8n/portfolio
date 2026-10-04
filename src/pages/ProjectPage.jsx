@@ -8,9 +8,13 @@ import OrderPulseBusinessCaseStudy from '../components/OrderPulseBusinessCaseStu
 import OrderPulseEmployeeCaseStudy from '../components/OrderPulseEmployeeCaseStudy.jsx';
 import PortfolioAssistantCaseStudy from '../components/PortfolioAssistantCaseStudy.jsx';
 import ProjectCaseStudy from '../components/ProjectCaseStudy.jsx';
+import ShowcaseCaseStudy from '../components/ShowcaseCaseStudy.jsx';
 import { useLanguage } from '../i18n/useLanguage.js';
 
-function ProjectCaseStudyContent({ project }) {
+function ProjectCaseStudyContent({ project, number }) {
+  if (project.caseStudyType === 'showcase') {
+    return <ShowcaseCaseStudy project={project} number={number} />;
+  }
   if (project.caseStudyType === 'portfolio-assistant') {
     return <PortfolioAssistantCaseStudy project={project} />;
   }
@@ -64,7 +68,7 @@ function ProjectPage() {
               {t('Back to Projects')}
             </Link>
           </div>
-          <ProjectCaseStudyContent project={project} />
+          <ProjectCaseStudyContent project={project} number={projects.indexOf(project) + 1} />
         </div>
       </section>
     </main>

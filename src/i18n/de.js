@@ -1,10 +1,12 @@
 import { deUiTranslations } from './deUi.js';
+import { deShowcaseTranslations } from './showcaseTranslations.js';
 
 export const de = {
   code: 'de',
   label: 'DE',
   translations: {
     ...deUiTranslations,
+    ...deShowcaseTranslations,
     // Global profile and navigation
     About: 'Über mich',
     Projects: 'Projekte',

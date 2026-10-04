@@ -7,21 +7,22 @@ const ASSISTANT_ROUTE = '/projects/ai-portfolio-assistant';
 
 function SeoMetadata() {
   const { pathname } = useLocation();
-  const { t } = useLanguage();
+  const { t, content } = useLanguage();
 
   useEffect(() => {
     const url = `${SITE_ORIGIN}${pathname}`;
     const isAssistantPage = pathname === ASSISTANT_ROUTE;
-    const title = isAssistantPage
+    const showcaseProject = content.projects.find((project) => project.caseStudyType === 'showcase' && project.caseStudyUrl === pathname);
+    const title = showcaseProject ? `${showcaseProject.title} | Vladyslav Lukianov` : isAssistantPage
       ? `${t('AI Portfolio Assistant & Lead Qualification')} | Vladyslav Lukianov`
       : t('Vladyslav Lukianov — AI Automation & IT Specialist');
-    const description = isAssistantPage
+    const description = showcaseProject ? showcaseProject.seoDescription : isAssistantPage
       ? t('AI portfolio assistant built with n8n, OpenAI, Supabase and RAG, featuring intent routing, contextual follow-ups and lead qualification.')
       : t('Vladyslav Lukianov is an AI Automation & IT Specialist who builds practical n8n workflows, business automations, and operational tools.');
-    const socialDescription = isAssistantPage
+    const socialDescription = showcaseProject || isAssistantPage
       ? description
       : t('Explore practical AI automation, n8n workflows, Google Sheets, Telegram, and operational reporting projects by Vladyslav Lukianov.');
-    const twitterDescription = isAssistantPage
+    const twitterDescription = showcaseProject || isAssistantPage
       ? description
       : t('Practical AI automation, n8n workflow, and IT projects by Vladyslav Lukianov.');
 
@@ -32,7 +33,7 @@ function SeoMetadata() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', socialDescription);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', twitterDescription);
-  }, [pathname, t]);
+  }, [pathname, t, content]);
 
   return null;
 }
