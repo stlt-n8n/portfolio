@@ -340,20 +340,20 @@ export const de = {
       'Ein statisches Portfolio zeigt Projekte. Wer gezielt nach Erfahrung, Technologien oder konkreten Fähigkeiten sucht, muss sich die Informationen jedoch selbst zusammensuchen.',
     'The assistant uses curated portfolio knowledge to answer relevant questions, directs potential work inquiries to a dedicated lead path, and keeps unrelated requests outside the portfolio scope.':
       'Der Assistent beantwortet Fragen auf Basis kuratierter Portfolio-Inhalte, leitet Projekt- und Jobanfragen über einen eigenen Pfad und begrenzt themenfremde Anfragen auf den Portfolio-Kontext.',
-    'The Vercel-hosted website reaches a local n8n webhook through a temporary Cloudflare HTTPS tunnel. After normalization and validation, GPT-4.1-mini classifies the request and routes it to one of three paths.':
-      'Die auf Vercel gehostete Website erreicht den lokalen n8n Webhook über einen temporären Cloudflare HTTPS-Tunnel. Nach Normalisierung und Validierung klassifiziert GPT-4.1-mini die Anfrage und leitet sie an einen von drei Pfaden weiter.',
+    'The Vercel-hosted React frontend connects to an n8n webhook over HTTPS. After normalization and validation, GPT-4.1-mini classifies each request and routes it to the portfolio-question, potential-lead, or off-topic path.':
+      'Das React-Frontend auf Vercel ist über HTTPS mit einem n8n Webhook verbunden. Nach Normalisierung und Validierung klassifiziert GPT-4.1-mini jede Anfrage und leitet sie an den Pfad für Portfolio-Fragen, potenzielle Leads oder themenfremde Anfragen weiter.',
     'Retrieves relevant portfolio knowledge from Supabase and generates a grounded answer.':
       'Ruft passende Portfolio-Inhalte aus Supabase ab und erstellt eine Antwort auf Basis dieser Informationen.',
     'Retrieves relevant capabilities and responds to hiring or project inquiries with a public contact CTA.':
       'Ruft passende Kompetenzen ab und beantwortet Job- oder Projektanfragen mit einem Hinweis auf die öffentlichen Kontaktmöglichkeiten.',
     'Returns a fixed portfolio-scoped reply without invoking the general answer flow.':
       'Gibt eine festgelegte Antwort zum Portfolio-Thema zurück, ohne den allgemeinen Antwortpfad zu starten.',
-    'The repository contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks. The repository does not verify the live vector-row count.':
-      'Das Repository enthält 49 kuratierte Portfolio-Abschnitte. OpenAI text-embedding-3-small erzeugt Embeddings mit 1.536 Dimensionen für Supabase PostgreSQL/pgvector. Das Retrieval ist auf bis zu vier passende Abschnitte ausgelegt. Die tatsächlich gespeicherte Anzahl im Live-Index ist durch das Repository nicht belegt.',
-    'The frontend sends up to eight previous user and assistant messages with each request. History helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source. The backend does not retain conversations between requests.':
-      'Das Frontend sendet pro Anfrage bis zu acht vorherige Nachrichten von Nutzer und Assistent. Der Verlauf hilft bei Rückfragen; die Fakten stammen weiterhin aus dem abgerufenen Portfolio-Wissen. Zwischen Anfragen speichert das Backend keine Gespräche.',
-    'A separate lead path handles hiring, collaboration, and automation inquiries. It can point visitors to public contact details, but the current MVP does not store leads in a CRM or trigger lead alerts.':
-      'Ein eigener Lead-Pfad bearbeitet Anfragen zu Jobs, Zusammenarbeit und Automatisierung. Er kann auf öffentliche Kontaktdaten verweisen; das aktuelle MVP speichert jedoch keine Leads in einem CRM und verschickt keine Lead-Benachrichtigungen.',
+    'The knowledge source contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks to ground each answer in relevant portfolio facts.':
+      'Die Wissensquelle enthält 49 kuratierte Portfolio-Abschnitte. OpenAI text-embedding-3-small erzeugt Embeddings mit 1.536 Dimensionen für Supabase PostgreSQL/pgvector. Das Retrieval ruft bis zu vier passende Abschnitte ab, damit Antworten auf relevanten Portfolio-Fakten basieren.',
+    'The frontend sends up to eight previous user and assistant messages with each request. This recent context helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source.':
+      'Das Frontend sendet pro Anfrage bis zu acht vorherige Nachrichten von Nutzer und Assistent. Dieser Gesprächskontext hilft bei Rückfragen; die Fakten stammen weiterhin aus dem abgerufenen Portfolio-Wissen.',
+    'A separate lead path handles hiring, collaboration, and automation inquiries. It retrieves relevant portfolio capabilities and guides visitors toward public contact details for a personal follow-up.':
+      'Ein eigener Lead-Pfad bearbeitet Job-, Kooperations- und Automatisierungsanfragen. Er ruft passende Portfolio-Kompetenzen ab und verweist für den persönlichen Austausch auf die öffentlichen Kontaktmöglichkeiten.',
     'Grounded portfolio answer': 'Antwort auf Basis von Portfolio-Wissen',
     'The assistant answers a question about technologies using retrieved portfolio knowledge.':
       'Der Assistent beantwortet eine Frage zu Technologien anhand abgerufener Portfolio-Inhalte.',
@@ -369,18 +369,22 @@ export const de = {
     'Knowledge ingestion workflow': 'Workflow zur Wissensaufnahme',
     'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.':
       'Ein separater n8n Workflow bereitet Portfolio-Wissen für Embeddings und die Speicherung in Supabase auf.',
-    'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.':
-      'Live-Anbindung: Der Assistent ist über einen HTTPS-Tunnel von Cloudflare mit dem n8n-Backend verbunden.',
-    'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.':
-      'n8n läuft lokal hinter einem temporären Cloudflare Quick Tunnel. Die Erreichbarkeit des Backends hängt daher vom lokalen System und vom Tunnel ab.',
-    'Conversation history is request-scoped; there is no persistent server-side memory.':
-      'Der Gesprächsverlauf gilt nur für die jeweilige Anfrage; eine dauerhafte serverseitige Speicherung gibt es nicht.',
-    'Potential leads are not stored in a CRM.':
-      'Potenzielle Leads werden nicht in einem CRM gespeichert.',
-    'The public webhook does not yet have production-grade authentication or rate limiting.':
-      'Für den öffentlichen Webhook fehlen noch produktionsreife Authentifizierung und Rate Limiting.',
-    'A production rollout would require stable backend hosting, a permanent domain, webhook authentication, rate limiting, and privacy-aware persistence for conversations or leads.':
-      'Für einen produktiven Betrieb wären stabiles Backend-Hosting, eine dauerhafte Domain, Webhook-Authentifizierung, Rate Limiting und eine datenschutzgerechte Speicherung von Gesprächen oder Leads nötig.',
+    'Live AI Architecture': 'Live-AI-Architektur',
+    'RAG-powered portfolio assistant with intent routing': 'RAG-basierter Portfolio-Assistent mit Intent-Routing',
+    'The assistant connects the React portfolio frontend to an n8n backend that classifies visitor intent, retrieves relevant portfolio knowledge from Supabase pgvector, and generates grounded responses with OpenAI.':
+      'Der Assistent verbindet das React-Portfolio mit einem n8n Backend. Dieses erkennt das Anliegen der Besucher, ruft passendes Portfolio-Wissen aus Supabase pgvector ab und generiert mit OpenAI Antworten auf Basis dieser Inhalte.',
+    'Portfolio questions, potential collaboration enquiries, and off-topic requests follow separate routes, allowing the assistant to answer from curated knowledge while keeping responses focused on the portfolio context.':
+      'Portfolio-Fragen, mögliche Kooperationsanfragen und themenfremde Nachrichten durchlaufen getrennte Pfade. So nutzt der Assistent kuratiertes Wissen und bleibt in seinen Antworten beim Portfolio-Kontext.',
+    'Recent conversation messages provide context for follow-up questions, while retrieved portfolio knowledge remains the factual source for generated answers.':
+      'Die jüngsten Nachrichten liefern den Gesprächskontext für Rückfragen. Die Fakten für generierte Antworten stammen weiterhin aus dem abgerufenen Portfolio-Wissen.',
+    'Intent classification and routing': 'Anliegen klassifizieren und gezielt weiterleiten',
+    'RAG with Supabase PostgreSQL + pgvector retrieval': 'RAG mit Retrieval über Supabase PostgreSQL + pgvector',
+    'Grounded responses generated with OpenAI': 'Faktenbasierte Antworten mit OpenAI generieren',
+    'Dedicated portfolio-question and potential-lead paths': 'Eigene Pfade für Portfolio-Fragen und potenzielle Leads',
+    'Off-topic guardrails and context-aware follow-ups': 'Guardrails für themenfremde Anfragen und kontextbezogene Rückfragen',
+    'React/Vite integration and n8n webhook orchestration': 'React/Vite-Anbindung und Orchestrierung über n8n Webhooks',
+    'The current portfolio deployment uses a lightweight backend environment; the architecture can be moved to persistent hosting for continuous availability.':
+      'Das aktuelle Portfolio-Deployment nutzt eine schlanke Backend-Umgebung. Für kontinuierliche Verfügbarkeit lässt sich die Architektur auf dauerhaftes Hosting übertragen.',
     'Project 07 · Case Study': 'Projekt 07 · Case Study',
     'Open screenshot': 'Screenshot öffnen',
     'Assistant in action': 'Assistent im Einsatz',
@@ -398,8 +402,6 @@ export const de = {
     'The routing and ingestion workflows': 'Workflows für Routing und Wissensaufnahme',
     'These n8n screenshots document the backend paths behind the chat examples.':
       'Die n8n Screenshots zeigen die Backend-Pfade hinter den Chat-Beispielen.',
-    'Current MVP Limitations': 'Aktuelle Grenzen des MVP',
-    'What remains before a production rollout': 'Was vor einem produktiven Betrieb noch fehlt',
     'AI portfolio assistant built with n8n, OpenAI, Supabase and RAG, featuring intent routing, contextual follow-ups and lead qualification.':
       'AI-Portfolio-Assistent mit n8n, OpenAI, Supabase und RAG: Intent-Routing, kontextbezogene Rückfragen und Lead-Qualifizierung.',
 

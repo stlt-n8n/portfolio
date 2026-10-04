@@ -340,20 +340,20 @@ export const ru = {
       'Статичное портфолио показывает проекты, но посетителю приходится самому искать сведения об опыте, технологиях и навыках, которые важны именно ему.',
     'The assistant uses curated portfolio knowledge to answer relevant questions, directs potential work inquiries to a dedicated lead path, and keeps unrelated requests outside the portfolio scope.':
       'Ассистент отвечает на вопросы по подготовленной базе знаний портфолио, отдельно обрабатывает запросы о работе и сотрудничестве и не выходит за рамки темы портфолио.',
-    'The Vercel-hosted website reaches a local n8n webhook through a temporary Cloudflare HTTPS tunnel. After normalization and validation, GPT-4.1-mini classifies the request and routes it to one of three paths.':
-      'Сайт на Vercel обращается к локальному webhook n8n через временный HTTPS-туннель Cloudflare. После нормализации и проверки GPT-4.1-mini классифицирует запрос и направляет его по одному из трёх сценариев.',
+    'The Vercel-hosted React frontend connects to an n8n webhook over HTTPS. After normalization and validation, GPT-4.1-mini classifies each request and routes it to the portfolio-question, potential-lead, or off-topic path.':
+      'React-frontend на Vercel подключён к webhook n8n по HTTPS. После нормализации и проверки GPT-4.1-mini классифицирует запрос и направляет его в сценарий для вопросов о портфолио, потенциальных клиентов или сообщений не по теме.',
     'Retrieves relevant portfolio knowledge from Supabase and generates a grounded answer.':
       'Находит подходящие сведения о портфолио в Supabase и формирует ответ на их основе.',
     'Retrieves relevant capabilities and responds to hiring or project inquiries with a public contact CTA.':
       'Находит сведения о подходящих компетенциях и отвечает на предложения о работе или проекте, предлагая открытые способы связи.',
     'Returns a fixed portfolio-scoped reply without invoking the general answer flow.':
       'Возвращает готовый ответ о тематике портфолио, не запуская обычную генерацию.',
-    'The repository contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks. The repository does not verify the live vector-row count.':
-      'В репозитории находятся 49 подготовленных фрагментов знаний о портфолио. OpenAI text-embedding-3-small создаёт векторы размерности 1536 для Supabase PostgreSQL/pgvector; поиск настроен на выдачу до четырёх подходящих фрагментов. Репозиторий не подтверждает фактическое число записей в рабочем индексе.',
-    'The frontend sends up to eight previous user and assistant messages with each request. History helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source. The backend does not retain conversations between requests.':
-      'С каждым запросом frontend передаёт до восьми предыдущих сообщений пользователя и ассистента. История помогает понять уточняющие вопросы, но источником фактов остаются найденные материалы портфолио. Backend не сохраняет диалог между запросами.',
-    'A separate lead path handles hiring, collaboration, and automation inquiries. It can point visitors to public contact details, but the current MVP does not store leads in a CRM or trigger lead alerts.':
-      'Отдельный сценарий обрабатывает предложения о работе, сотрудничестве и автоматизации. Он может подсказать открытые контакты, но в текущем MVP лиды не сохраняются в CRM и уведомления о них не отправляются.',
+    'The knowledge source contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks to ground each answer in relevant portfolio facts.':
+      'Источник знаний содержит 49 подготовленных фрагментов о портфолио. OpenAI text-embedding-3-small создаёт векторы размерности 1536 для Supabase PostgreSQL/pgvector. Поиск настроен на выдачу до четырёх подходящих фрагментов, чтобы ответы опирались на релевантные факты.',
+    'The frontend sends up to eight previous user and assistant messages with each request. This recent context helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source.':
+      'С каждым запросом frontend передаёт до восьми предыдущих сообщений пользователя и ассистента. Этот контекст помогает понять уточняющие вопросы, а источником фактов остаются найденные материалы портфолио.',
+    'A separate lead path handles hiring, collaboration, and automation inquiries. It retrieves relevant portfolio capabilities and guides visitors toward public contact details for a personal follow-up.':
+      'Отдельный сценарий обрабатывает предложения о работе, сотрудничестве и автоматизации. Он находит подходящие компетенции в портфолио и предлагает открытые контакты для личного обсуждения.',
     'Grounded portfolio answer': 'Ответ на основе данных портфолио',
     'The assistant answers a question about technologies using retrieved portfolio knowledge.':
       'Ассистент отвечает на вопрос о технологиях, опираясь на найденные материалы портфолио.',
@@ -369,18 +369,22 @@ export const ru = {
     'Knowledge ingestion workflow': 'Воркфлоу загрузки знаний',
     'A separate n8n workflow prepares portfolio knowledge for embedding and storage in Supabase.':
       'Отдельный воркфлоу n8n готовит сведения о портфолио для создания векторов и хранения в Supabase.',
-    'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.':
-      'Интеграция работает: ассистент подключён к backend n8n через HTTPS-туннель Cloudflare Quick Tunnel.',
-    'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.':
-      'n8n работает локально через временный Cloudflare Quick Tunnel. Доступность backend зависит от работы локального компьютера и туннеля.',
-    'Conversation history is request-scoped; there is no persistent server-side memory.':
-      'История передаётся только в рамках запроса; постоянного хранения диалогов на сервере нет.',
-    'Potential leads are not stored in a CRM.':
-      'Потенциальные клиенты не сохраняются в CRM.',
-    'The public webhook does not yet have production-grade authentication or rate limiting.':
-      'Для публичного webhook пока не реализованы аутентификация и ограничение частоты запросов уровня production.',
-    'A production rollout would require stable backend hosting, a permanent domain, webhook authentication, rate limiting, and privacy-aware persistence for conversations or leads.':
-      'Для production-версии нужны стабильный хостинг backend, постоянный домен, защита webhook, ограничение частоты запросов и хранение диалогов или лидов с учётом приватности.',
+    'Live AI Architecture': 'Рабочая AI-архитектура',
+    'RAG-powered portfolio assistant with intent routing': 'RAG-ассистент портфолио с маршрутизацией запросов',
+    'The assistant connects the React portfolio frontend to an n8n backend that classifies visitor intent, retrieves relevant portfolio knowledge from Supabase pgvector, and generates grounded responses with OpenAI.':
+      'Ассистент связывает React-frontend портфолио с backend n8n. Он определяет цель обращения, находит подходящие сведения в Supabase pgvector и формирует ответы с помощью OpenAI на основе найденных материалов.',
+    'Portfolio questions, potential collaboration enquiries, and off-topic requests follow separate routes, allowing the assistant to answer from curated knowledge while keeping responses focused on the portfolio context.':
+      'Вопросы о портфолио, запросы о сотрудничестве и сообщения не по теме проходят по отдельным сценариям. Ассистент отвечает по подготовленной базе знаний и сохраняет фокус на портфолио.',
+    'Recent conversation messages provide context for follow-up questions, while retrieved portfolio knowledge remains the factual source for generated answers.':
+      'Последние сообщения дают контекст для уточняющих вопросов. Источником фактов для ответов остаются найденные сведения о портфолио.',
+    'Intent classification and routing': 'Классификация и маршрутизация запросов',
+    'RAG with Supabase PostgreSQL + pgvector retrieval': 'RAG с поиском в Supabase PostgreSQL + pgvector',
+    'Grounded responses generated with OpenAI': 'Ответы OpenAI на основе найденных фактов',
+    'Dedicated portfolio-question and potential-lead paths': 'Отдельные сценарии для вопросов о портфолио и потенциальных клиентов',
+    'Off-topic guardrails and context-aware follow-ups': 'Ограничение запросов не по теме и уточнения с учётом контекста',
+    'React/Vite integration and n8n webhook orchestration': 'Интеграция React/Vite и оркестрация через webhook n8n',
+    'The current portfolio deployment uses a lightweight backend environment; the architecture can be moved to persistent hosting for continuous availability.':
+      'Текущая версия портфолио использует компактное backend-окружение; для непрерывной доступности архитектуру можно перенести на постоянный хостинг.',
     'Project 07 · Case Study': 'Проект 07 · Кейс',
     'Open screenshot': 'Открыть скриншот',
     'Assistant in action': 'Ассистент в работе',
@@ -398,8 +402,6 @@ export const ru = {
     'The routing and ingestion workflows': 'Маршрутизация и загрузка знаний',
     'These n8n screenshots document the backend paths behind the chat examples.':
       'На скриншотах n8n показаны backend-сценарии, которые стоят за примерами чата.',
-    'Current MVP Limitations': 'Текущие ограничения MVP',
-    'What remains before a production rollout': 'Что нужно до полноценного запуска',
     'AI portfolio assistant built with n8n, OpenAI, Supabase and RAG, featuring intent routing, contextual follow-ups and lead qualification.':
       'AI-ассистент портфолио на n8n, OpenAI, Supabase и RAG: маршрутизация запросов, ответы с учётом контекста и квалификация лидов.',
 

@@ -147,16 +147,17 @@ function PortfolioAssistantCaseStudy({ project }) {
 
       <section className="case-study-block">
         <div className="case-study-block-header">
-          <span className="project-kicker">{t('Current MVP Limitations')}</span>
-          <h4>{t('What remains before a production rollout')}</h4>
+          <span className="project-kicker">{project.implementation.eyebrow}</span>
+          <h4>{project.implementation.title}</h4>
         </div>
-        <ul className="portfolio-assistant-limitations">
-          {project.scopeLimitations.map((limitation) => <li key={limitation}>{limitation}</li>)}
+        {project.implementation.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        <ul className="showcase-detail-list">
+          {project.implementation.items.map((item) => <li key={item}>{item}</li>)}
         </ul>
-        <p>{project.nextSteps}</p>
       </section>
 
       <div className="case-study-footer">
+        <p><small>{project.scopeNote}</small></p>
         <span className="project-kicker">{t('Technologies')}</span>
         <div className="badge-list" aria-label={t('{title} technologies', { title: project.title })}>
           {project.technologies.map((technology) => (

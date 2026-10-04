@@ -610,7 +610,7 @@ export const projects = [
     solution:
       'The assistant uses curated portfolio knowledge to answer relevant questions, directs potential work inquiries to a dedicated lead path, and keeps unrelated requests outside the portfolio scope.',
     architecture:
-      'The Vercel-hosted website reaches a local n8n webhook through a temporary Cloudflare HTTPS tunnel. After normalization and validation, GPT-4.1-mini classifies the request and routes it to one of three paths.',
+      'The Vercel-hosted React frontend connects to an n8n webhook over HTTPS. After normalization and validation, GPT-4.1-mini classifies each request and routes it to the portfolio-question, potential-lead, or off-topic path.',
     intentRoutes: [
       {
         name: 'PORTFOLIO_QUESTION',
@@ -626,11 +626,11 @@ export const projects = [
       },
     ],
     knowledge:
-      'The repository contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks. The repository does not verify the live vector-row count.',
+      'The knowledge source contains 49 curated portfolio chunks. OpenAI text-embedding-3-small creates 1,536-dimensional embeddings for Supabase PostgreSQL/pgvector; retrieval is configured for up to four matching chunks to ground each answer in relevant portfolio facts.',
     context:
-      'The frontend sends up to eight previous user and assistant messages with each request. History helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source. The backend does not retain conversations between requests.',
+      'The frontend sends up to eight previous user and assistant messages with each request. This recent context helps resolve follow-up questions, while retrieved portfolio knowledge remains the factual source.',
     lead:
-      'A separate lead path handles hiring, collaboration, and automation inquiries. It can point visitors to public contact details, but the current MVP does not store leads in a CRM or trigger lead alerts.',
+      'A separate lead path handles hiring, collaboration, and automation inquiries. It retrieves relevant portfolio capabilities and guides visitors toward public contact details for a personal follow-up.',
     media: [
       {
         title: 'Grounded portfolio answer',
@@ -668,15 +668,25 @@ export const projects = [
         height: 774,
       },
     ],
-    scopeLimitations: [
-      'Live integration: The assistant connects to the n8n backend through an HTTPS Cloudflare Quick Tunnel.',
-      'n8n runs locally behind a temporary Cloudflare Quick Tunnel, so backend availability depends on the local runtime and tunnel.',
-      'Conversation history is request-scoped; there is no persistent server-side memory.',
-      'Potential leads are not stored in a CRM.',
-      'The public webhook does not yet have production-grade authentication or rate limiting.',
-    ],
-    nextSteps:
-      'A production rollout would require stable backend hosting, a permanent domain, webhook authentication, rate limiting, and privacy-aware persistence for conversations or leads.',
+    implementation: {
+      eyebrow: 'Live AI Architecture',
+      title: 'RAG-powered portfolio assistant with intent routing',
+      paragraphs: [
+        'The assistant connects the React portfolio frontend to an n8n backend that classifies visitor intent, retrieves relevant portfolio knowledge from Supabase pgvector, and generates grounded responses with OpenAI.',
+        'Portfolio questions, potential collaboration enquiries, and off-topic requests follow separate routes, allowing the assistant to answer from curated knowledge while keeping responses focused on the portfolio context.',
+        'Recent conversation messages provide context for follow-up questions, while retrieved portfolio knowledge remains the factual source for generated answers.',
+      ],
+      items: [
+        'Intent classification and routing',
+        'RAG with Supabase PostgreSQL + pgvector retrieval',
+        'Grounded responses generated with OpenAI',
+        'Dedicated portfolio-question and potential-lead paths',
+        'Off-topic guardrails and context-aware follow-ups',
+        'React/Vite integration and n8n webhook orchestration',
+      ],
+    },
+    scopeNote:
+      'The current portfolio deployment uses a lightweight backend environment; the architecture can be moved to persistent hosting for continuous availability.',
     cardTechnologies: ['n8n', 'OpenAI', 'Supabase', 'RAG', 'pgvector', 'Vercel'],
     technologies: [
       'n8n', 'OpenAI API', 'GPT-4.1-mini', 'text-embedding-3-small',

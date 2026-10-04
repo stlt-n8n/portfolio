@@ -46,7 +46,10 @@ function ShowcaseCaseStudy({ project, number }) {
           {section.media && <div className={`showcase-media-grid${section.portrait ? ' is-portrait' : ''}${section.media.length === 1 ? ' is-single' : ''}`}>{section.media.map((media) => <ShowcaseScreenshot key={media.src} media={media} t={t} />)}</div>}
         </section>
       ))}
-      <div className="case-study-footer"><a className="button button-secondary" href={project.githubUrl} target="_blank" rel="noopener noreferrer"><Github size={18} />{t('View on GitHub')}</a></div>
+      <div className="case-study-footer">
+        {project.scopeNote && <p><small>{project.scopeNote}</small></p>}
+        <a className="button button-secondary" href={project.githubUrl} target="_blank" rel="noopener noreferrer"><Github size={18} />{t('View on GitHub')}</a>
+      </div>
     </article>
   );
 }
